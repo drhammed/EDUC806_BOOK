@@ -129,7 +129,7 @@ Interpretation- **The points seem to follow a linear pattern, although with a ne
 
     ![](images/studentized_regression_plot.PNG)
 
-    Also, to assess the normality of the residuals, consult the P-P Plot from the regression output.
+    **Also, to assess the normality of the residuals, consult the P-P Plot from the regression output.**
 
     ![](images/normal_p-p_plot.PNG)
 
