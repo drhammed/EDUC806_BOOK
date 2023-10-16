@@ -111,6 +111,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#chapter-4--regression" id="toc-chapter-4--regression" class="nav-link active" data-scroll-target="#chapter-4--regression">Chapter 4- Regression</a>
   <ul class="collapse">
   <li><a href="#simple-linear-regression-slr" id="toc-simple-linear-regression-slr" class="nav-link" data-scroll-target="#simple-linear-regression-slr">Simple Linear Regression (SLR)</a></li>
+  <li><a href="#multiple-linear-regression" id="toc-multiple-linear-regression" class="nav-link" data-scroll-target="#multiple-linear-regression">Multiple Linear Regression</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -261,9 +262,115 @@ ul.task-list li input[type="checkbox"] {
 <p>We are 95% certain that the individual sales price of Jack Smithʼs Corvette will be</p>
 <p>somewhere between $14,552.91726 (LICI_1) and $21,445.14099 (UICI_1).</p></li>
 </ol>
-
-
 </section>
+</section>
+<section id="multiple-linear-regression" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-linear-regression">Multiple Linear Regression</h3>
+<p>So far, we have learned how to calculate a linear regression equation and make predictions. However, what if there are other potential independent variables to consider? In fact, It is uncommon for a dataset or research study to have only one predictor. Similarly, it is rare for a response variable to depend solely on a single variable. In this chapter, we will expand our simple linear regression (SLR) model to include multiple predictors. Multiple regression allows us to incorporate multiple independent variables and assign weights to each of them, resulting in more accurate predictions. The process of conducting a multiple regression in SPSS is similar to that of linear regression, with the difference being the inclusion of additional independent variables.</p>
+<p>For this lab, we shall be using the “autompg” dataset containing car information. This dataset provides data on fuel economy from 1999 and 2008 for about 38 popular models of cars. It contains a response variable known as “mpg,” which records the city fuel efficiency of cars, alongside several predictor variables detailing the vehicle attributes. For anyone using R, you can find the dataset loaded with the <em>ggplot2</em> package.</p>
+<p><em>Brief description of the variables in the data</em></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">mpg</td>
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">city fuel efficiency</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cyl</td>
+<td style="text-align: left;">integer</td>
+<td style="text-align: left;">number of cylinders</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">displ</td>
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">engine displacement in liters</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hp</td>
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">horse power</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">wt</td>
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">Weight</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">acc</td>
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">acceleration</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">integer</td>
+<td style="text-align: left;">year of manufacturing</td>
+</tr>
+</tbody>
+</table>
+<p>At this point, our focus will be on utilizing two variables, “wt” and “year,” as predictor variables. In other words, we aim to create a model that predicts a car’s fuel efficiency (mpg) based on its weight (wt) and the model year (year). To achieve this, we will formulate the following linear model:</p>
+<p><span class="math display">\[ Y_i = \beta_i + \beta_1X_1 + \beta_2X_2 + \epsilon_i, \hspace4ex i = 1, 2, …,n\]</span></p>
+<p>where <span class="math inline">\(\epsilon_i \sim N(0,\alpha^2)\)</span> , <span class="math inline">\(x_{i1}\)</span> = the weight (wt) of the <span class="math inline">\(i\)</span> car, and <span class="math inline">\(x_{i2}\)</span> as the model year (year) of the <span class="math inline">\(i\)</span> car.</p>
+<p><strong>Task- before we do for multiple predictors, let’s quickly revist SLR and use one predictor. For this part, perform a simple linear regression of mpg against wt. What’s the R-squared? is weight a good predictor of mpg? (refer back to the tutorial on SLR- we just covered all of that)!</strong></p>
+<p>Your model summary should be like below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/model_summary_mpg_vs_wt-01.PNG" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p><em>Okay, now that we have done that- we can proceed to multiple linear regression. Recall, we want to build a model with mpg as dependent variable, while wt and year as independent variables.</em></p>
+<p>To do this SPSS,</p>
+<ol type="1">
+<li><p>Click on&nbsp;<strong>Analyze</strong>, then&nbsp;<strong>Regression</strong>, then&nbsp;<strong>Linear</strong> from the submenu to open the Linear Regression dialog.</p></li>
+<li><p>In the Linear Regression dialog:</p>
+<ul>
+<li><p>Move the dependent variable “mpg” to the “Dependent” box.</p></li>
+<li><p>Move the independent variables “wt” and “year” to the “Independent(s)” box.</p></li>
+</ul></li>
+<li><p>Click the “Statistics” button to access the statistics options and check “estimates” (under regression coefficient) and model fit to request the coefficients of the linear model and model fit.</p></li>
+<li><p>Click “Continue” to return to the Linear Regression dialog.</p></li>
+<li><p>Finally, click “OK” to run the linear regression analysis.</p></li>
+</ol>
+<p><strong>Questions</strong></p>
+<p>1) Looking at the Output Viewer window, you should sea tables that are similar to the ones in our previous example (our model summary is new). Take a look at the “model summary” to determine the new R squared and Standard Error of the Estimate. Compare that with the previous regression output- <strong><em>has the inclusion of additional variables (year) resulted in an improvement in our model</em></strong>?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/model_summary_wt_year_mpg.PNG" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Note- <em>the new R squared has improved, and the Standard Error has reduced! This indicates that our multiple regression model is more precise than the previous linear regression model.</em></p>
+<p>2) <strong><em>Do all our variables hold statistical significance</em></strong>?</p>
+<p>You can verify this by checking the ANOVA table. The F statistic obtained and its significance indicate whether our independent variables have a statistically significant association with our dependent variable. It also helps us determine whether our model is a good fit for explaining the variation in the mpg.</p>
+<p>In our case, we have evidence to believe it is, given that the significance (sig) is way below 0.05 (&lt;0.001).</p>
+<p>Lastly, check the "Coefficients" table. Here we find the value of&nbsp;<em>a</em> (or the slope) for each of our independent variables (wt and year) and we also find our intercept.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Coefficient_mlr.PNG" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>So, how can we write our multiple regression equation? mpg (<em>Y</em>) = -14.638 – 0.07(weight) + 0.761(year). Thus, if we added a new car and had some basic data like the year and weight, we would be able to estimate, with a relatively high degree of confidence, how many mpg would be used given the predictors.</p>
+<p><strong>Interpretation</strong></p>
+<p>Here, the constant = -14.638 represents our estimate for the intercept, i.e.- the mean miles per gallon for a car that has a weight of 0 pounds and was manufactured in 1900 (the start year of our dataset). As we can see here that the estimate is negative, which, in the real world, is physically impossible. However, this is not surprising because we cannot realistically expect our model to accurately predict the fuel efficiency of cars from 1900 that weigh 0 pounds because such vehicles never existed anyways! So, like simple linear regression, this value (intercept) represent the mean of Y when all predictors are set to 0.</p>
+<p>However, the interpretation of the coefficients of our predictors is slightly different from previous SLR. For instance, the estimate of -0.007 for “wt” = the expected average change in miles per gallon for a one-unit increase in weight for cars of a specific model year, with the year being held constant. Note that this estimate is negative, which aligns with our expectations, as, in general, fuel efficiency tends to decrease for larger vehicles. However, in the context of multiple linear regression, this interpretation is contingent upon a fixed value for another predictor, such as “year” in our case. This means that the relationship between fuel efficiency and weight might not hold true when additional factors, like the model year, are taken into account, potentially causing a reversal in the sign of our coefficient.</p>
+<p>Lastly, the estimate of 0.761 for “year” = the expected average change in miles per gallon for a one-year increase in the model year for cars with a specific weight, where weight is held constant now. It is not far from expectation that this estimate is positive since one would anticipate that, over time, as technology advances, cars with the specific weight would achieve better fuel efficiency compared to their earlier counterparts.</p>
+<p>Note- Sometimes, you may discover that the model is not statistically significant, or that one independent variable does not hold statistical significance. In such instances, you may want to rerun the model, eliminating insignificant or redundant variables. Ideally, it is good to do some variable importance selection on your predictors before including them in the model (or use some prior knowledge of the system). It may take several attempts to run multiple regression models to find the best-fitting model for the data. Generally, it is good to have model with a low standard error of the estimate, high R squared and relatively simple. A model with three independent variables, a relatively high R squared and low standard error may be preferable to a model with 19 independent variables and a high R squared and low standard error (this is why variable importance is crucial)!</p>
+<p>To do variable importance selection, you can calculate the multicollinearity. In SPSS, you can compute the Variance Inflation Factor (VIF). This can be done under regression&gt; statistics&gt; collinearity. The output should be like below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Coefficient_mlr_vif.PNG" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>The VIF values indicate the degree of multicollinearity for each variable in the model. Generally, a VIF &gt;6 is considered a sign of high multicollinearity between the predictor variables and can affect the stability and interpretability of your regression model. You may need to address multicollinearity by either removing one of the correlated variables (redundant) or you can use dimensionality reduction techniques like Principal Component Analysis (PCA) to reduce dimensions (we shall come back to PCA soon).</p>
+<p>#End</p>
+
+
 </section>
 </section>
 
