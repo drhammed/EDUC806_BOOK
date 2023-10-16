@@ -61,6 +61,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -106,7 +108,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#chapter-4--regression" id="toc-chapter-4--regression" class="nav-link active" data-scroll-target="#chapter-4--regression">Chapter 4- Regression</a></li>
+  <li><a href="#chapter-4--regression" id="toc-chapter-4--regression" class="nav-link active" data-scroll-target="#chapter-4--regression">Chapter 4- Regression</a>
+  <ul class="collapse">
+  <li><a href="#simple-linear-regression-slr" id="toc-simple-linear-regression-slr" class="nav-link" data-scroll-target="#simple-linear-regression-slr">Simple Linear Regression (SLR)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -144,9 +149,43 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="chapter-4--regression" class="level1">
 <h1>Chapter 4- Regression</h1>
-<p>#write it down here</p>
+<section id="simple-linear-regression-slr" class="level3">
+<h3 class="anchored" data-anchor-id="simple-linear-regression-slr">Simple Linear Regression (SLR)</h3>
+<p>During Tutorial 2 &amp; 3 (“Model Terminology”), I explained that Linear model and Linear regression are just synonyms and we often use either terms when quantifying the effect of a "<strong>continuous"</strong> independent variable on a"<strong>continuous"</strong> dependent (response) variable. The difference between this and ANOVA is that <strong>ANOVA</strong> is usually used when quantifying the effect of a "<strong>discrete (or categorical)"</strong> independent variable on a"<strong>continuous"</strong> dependent variable. So, it is important to note that- <em>ANOVA is also a linear regression!</em> In fact, if you run "anova" function on linear model object, you'll most likely get the same p-value.</p>
+<p><strong>Regression</strong> generally refers to the fact that we are quantifying the relationship between a response variable and (one or more) predictor variables. In the case of <strong>SLR</strong>, both the response and the predictor are <em>numeric</em> variables and we are using a single predictor (independent) variable. Later we will use multiple predictor variables (multiple regression). Also, this models tells us that our model for Y is a linear combination of the predictors X. (In this case just one predictor)! For now, this always results in a model that is a line, but this is not always the case (and we may see this later on in the semester).</p>
+<p>Like ANOVA, in SLR, we often talk about the assumptions that this model makes. This include-</p>
+<ol type="1">
+<li>Linearity- the relationship between Y and x is linear, of the form <span class="math inline">\(\beta_0 + \beta_1x\)</span>.</li>
+<li>Independent. The errors <span class="math inline">\(\epsilon\)</span> are independent.</li>
+<li>Normality. The errors, <span class="math inline">\(\epsilon\)</span> are normally distributed. I.e. the "error" around the line follows a normal distribution.</li>
+<li>Equality of Variance. At each value of x, the variance of Y is the same.</li>
+</ol>
+<p>For this lab, we will be using a year dataset on Corvettes sales in Virginia Beach, Virginia. Using this data, ten Corvettes (between 1 and 6yrs old) were randomly selected and the below data shows the sales price (in hundreds of dollars) denoted by y and the age (in years) denoted by x.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Corvettes-01.PNG" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Tasks</p>
+<ol type="1">
+<li>Graph the data in a scatterplot to determine if there is a possible linear relationship.</li>
+<li>Compute and interpret the linear correlation coefficient, r.</li>
+<li>Determine the regression equation for the data.</li>
+<li>Graph the regression equation and the data points.</li>
+<li>Identify outliers and potential influential observations.</li>
+<li>Compute and interpret the coefficient of determination, r2.</li>
+<li>Obtain the residuals and create a residual plot. Decide whether it is reasonable to consider that the assumptions for regression analysis are met by the variables in questions.</li>
+<li>At the 5% significance level, do the data provide sufficient evidence to conclude that the slope of the population regression line is not 0 and, hence, that age is useful as a predictor of sales price for Corvettes?</li>
+<li>Obtain and interpret a 95% confidence interval for the slope, β, of the population regression line that relates age to sales price for Corvettes.</li>
+<li>Obtain a point estimate for the mean sales price of all 4-year-old Corvettes.</li>
+<li>Determine a 95% confidence interval for the mean sales price of all 4-year-old Corvettes.</li>
+<li>Find the predicted sales price of Jack Smith's 4-year-old Corvette.</li>
+<li>Determine a 95% prediction interval for the sales price of Jack Smith's 4-year-old Corvette.</li>
+</ol>
+<p>To begin, open your SPSS and enter the two variables in the SPSS frame.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
