@@ -1,0 +1,11 @@
+---
+title: "EDUC_806- Quantitative Research Methods"
+author: "Hammed Akande"
+project:
+  type: website
+  output-dir: docs
+
+date: 16 October 2023
+---
+
+# Chapter 4- Regression
