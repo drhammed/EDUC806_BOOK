@@ -228,36 +228,17 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="images/model_summary_r2.PNG" class="img-fluid"></p>
 <p>The r<sup>2</sup> = 0.937; therefore, about 93.7% of the variation in the price data is explained by age. I.e., as the car gets older, the value/price drops! &nbsp;The regression equation appears to be very useful for making predictions since the value of r<sup>2</sup> is close to 1.</p>
 <p>Note- we also have adjusted R-square. R-square technically measures the variation of a regression model (variation in Y given x). R-squared either increases or remains the same when new predictors are added to the model. Adjusted R-squared measures the variation for a multiple regression model, and helps you determine goodness of fit. For the purpose of this SLR (one predictor, we are not adding more), so we can decide to intepret any of them. But if you have multiple predictors, you may want to look into Adj. R2)!</p></li>
-<li><p>Residuals</p></li>
-</ol>
-<pre><code>The residuals and standardized values (as well as the predicted values, the confidence
-
-interval endpoints, and the prediction interval endpoints) can be found in the data window.
-
-![](images/Residuals.PNG)
-
-To create a residual plot, select Graphs\&gt; Scatter/Dot\&gt;Simple. Select &nbsp;the residuals (RES_1) as the Y Axis variable and Age as the X Axis variable. Click \"Titles\" to enter \"Residual Plot\" as the title for your graph, and click \"Continue\". Click \"OK\".
-
-Double-click the resulting graph in the output window, select \"Options\" \&gt; \"Y Axis Reference Line\", select the \"Reference Line\" tab in the properties window, add position of line \"0\", and click \"Apply\". Click the close box to exit the chart editor.
-
-Do the same scatter plot to create a studentized residual plot. Select the SRES as the Y axis in this case (Age remains the X axis). Set the title and enter "Studentized Residual Plot".
-
-![](images/Residual_plot.PNG){width="100%"}
-
-![](images/studentized_regression_plot.PNG)
-
-**Also, to assess the normality of the residuals, consult the P-P Plot from the regression output.**
-
-![](images/normal_p-p_plot.PNG)
-
-**Interpretation**- The residual plot shows a random scatter of the points (independence) with a constant spread (variance). Also, the studentized residual plot shows a random scatter of the points (independence) with a constant variance and with no values beyond the ±2 standard
-
-deviation reference lines (no outliers). The normal probability plot of the residuals shows the points
-
-close to a diagonal line; therefore, the residuals appear to be approximately normally distributed.
-
-Thus, we have evidence to conclude that the assumptions for regression analysis appear to be met.</code></pre>
-<ol start="8" type="1">
+<li><p>Residuals</p>
+<p>The residuals, predicted values and confidence intervals can be found in the data window.</p>
+<p><img src="images/Residuals-02.PNG" class="img-fluid"></p>
+<p>To create a residual plot, select Graphs&gt; Scatter/Dot&gt;Simple. Select &nbsp;the residuals (RES_1) as the Y Axis variable and Age as the X Axis variable. Click "Titles" to enter "Residual Plot" as the title for your graph, and click "Continue". Click "OK".</p>
+<p>Double-click the resulting graph in the output window, select "Options" &gt; "Y Axis Reference Line", select the "Reference Line" tab in the properties window, add position of line "0", and click "Apply". Click the close box to exit the chart editor.</p>
+<p><img src="images/Residual_plot-02.PNG" class="img-fluid"></p>
+<p>Do the same scatter plot to create a studentized residual plot. Select the SRES as the Y axis in this case (Age remains the X axis). Set the title and enter “Studentized Residual Plot”.</p>
+<p><img src="images/studentized_regression_plot-02.PNG" class="img-fluid"></p>
+<p><strong>Also, to assess the normality of the residuals, consult the P-P Plot from the regression output.</strong></p>
+<p><img src="images/normal_p-p_plot-02.PNG" class="img-fluid"></p>
+<p><strong>Interpretation</strong>- The residual plot shows a random scatter of the points (independence) with a constant spread (variance). Also, the studentized residual plot shows a random scatter of the points (independence) with a constant variance and with no values beyond the ±2 standard deviation reference lines (no outliers). The normal probability plot of the residuals shows the points close to a diagonal line; therefore, the residuals appear to be approximately normally distributed. Thus, we have evidence to conclude that the assumptions for regression analysis appear to be met.</p></li>
 <li><p>Question - <em>Using 5% significance level, do the data provide sufficient evidence to conclude that the</em></p>
 <p><em>slope of the population regression line is not 0 and, hence, that age is useful as a predictor</em></p>
 <p><em>of sales price for Corvettes</em>?</p>

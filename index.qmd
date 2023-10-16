@@ -111,35 +111,27 @@ Interpretation- **The points seem to follow a linear pattern, although with a ne
 
     Note- we also have adjusted R-square. R-square technically measures the variation of a regression model (variation in Y given x). R-squared either increases or remains the same when new predictors are added to the model. Adjusted R-squared measures the variation for a multiple regression model, and helps you determine goodness of fit. For the purpose of this SLR (one predictor, we are not adding more), so we can decide to intepret any of them. But if you have multiple predictors, you may want to look into Adj. R2)!
 
-7.   Residuals
+7.  Residuals
 
-    The residuals and standardized values (as well as the predicted values, the confidence
+    The residuals, predicted values and confidence intervals can be found in the data window.
 
-    interval endpoints, and the prediction interval endpoints) can be found in the data window.
-
-    ![](images/Residuals.PNG)
+    ![](images/Residuals-02.PNG)
 
     To create a residual plot, select Graphs\> Scatter/Dot\>Simple. Select  the residuals (RES_1) as the Y Axis variable and Age as the X Axis variable. Click \"Titles\" to enter \"Residual Plot\" as the title for your graph, and click \"Continue\". Click \"OK\".
 
     Double-click the resulting graph in the output window, select \"Options\" \> \"Y Axis Reference Line\", select the \"Reference Line\" tab in the properties window, add position of line \"0\", and click \"Apply\". Click the close box to exit the chart editor.
 
+    ![](images/Residual_plot-02.PNG)
+
     Do the same scatter plot to create a studentized residual plot. Select the SRES as the Y axis in this case (Age remains the X axis). Set the title and enter "Studentized Residual Plot".
 
-    ![](images/Residual_plot.PNG){width="100%"}
-
-    ![](images/studentized_regression_plot.PNG)
+    ![](images/studentized_regression_plot-02.PNG)
 
     **Also, to assess the normality of the residuals, consult the P-P Plot from the regression output.**
 
-    ![](images/normal_p-p_plot.PNG)
+    ![](images/normal_p-p_plot-02.PNG)
 
-    **Interpretation**- The residual plot shows a random scatter of the points (independence) with a constant spread (variance). Also, the studentized residual plot shows a random scatter of the points (independence) with a constant variance and with no values beyond the ±2 standard
-
-    deviation reference lines (no outliers). The normal probability plot of the residuals shows the points
-
-    close to a diagonal line; therefore, the residuals appear to be approximately normally distributed.
-
-    Thus, we have evidence to conclude that the assumptions for regression analysis appear to be met.
+    **Interpretation**- The residual plot shows a random scatter of the points (independence) with a constant spread (variance). Also, the studentized residual plot shows a random scatter of the points (independence) with a constant variance and with no values beyond the ±2 standard deviation reference lines (no outliers). The normal probability plot of the residuals shows the points close to a diagonal line; therefore, the residuals appear to be approximately normally distributed. Thus, we have evidence to conclude that the assumptions for regression analysis appear to be met.
 
 8.  Question - *Using 5% significance level, do the data provide sufficient evidence to conclude that the*
 
