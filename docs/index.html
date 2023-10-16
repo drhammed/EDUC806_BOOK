@@ -166,7 +166,8 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="images/Corvettes-01.PNG" class="img-fluid figure-img"></p>
 </figure>
 </div>
-<p>Tasks</p>
+<section id="tasks" class="level4">
+<h4 class="anchored" data-anchor-id="tasks">Tasks</h4>
 <ol type="1">
 <li>Graph the data in a scatterplot to determine if there is a possible linear relationship.</li>
 <li>Compute and interpret the linear correlation coefficient, r.</li>
@@ -182,9 +183,106 @@ ul.task-list li input[type="checkbox"] {
 <li>Find the predicted sales price of Jack Smith's 4-year-old Corvette.</li>
 <li>Determine a 95% prediction interval for the sales price of Jack Smith's 4-year-old Corvette.</li>
 </ol>
-<p>To begin, open your SPSS and enter the two variables in the SPSS frame.</p>
+<p>To begin, open your SPSS and load in the Corvettes_data. You can download it <a href="https://drive.google.com/file/d/1Hk_w8GMsFSajXT4sj57zhzax1oCm1zew/view?usp=drive_link">here</a>. if for anything that doesn’t work, you can manually enter the two variables in the SPSS.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Corv_data.PNG" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p><em>1. To graph the data in a scatterplot and determine if there is a possible linear relationship</em>.</p>
+<p>Select Graphs &gt; Scatter/Dot &gt; select Simple, then click the Define button. The Y-axis should be the Price and the X Axis variable = Age. &nbsp;Click on "Titles" and you can enter a descriptive title for your graph, and click "Continue." Click "OK".</p>
+<p><em>Your graph should look similar to the figure below</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Price vs Age.PNG" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Interpretation- <strong>The points seem to follow a linear pattern, although with a negative slope</strong>.</p>
+<ol start="2" type="1">
+<li><p>To compute the linear correlation coefficient,</p>
+<p>Click on “Analyze” &gt; “Correlate” &gt; “Bivariate”. Select “Age” and “Price” as the variables and select “Pearson” as the correlation coefficient. Finally, you can run the analysis.</p>
+<p><img src="images/correlation_output.PNG" class="img-fluid"></p>
+<p>The Pearson Correlation is a statistical method that calculates the strength and direction of linear relationships between continuous variables. It produces a sample correlation coefficient, r, which can be used to evaluate whether there is a linear relationship among the same variables in the population. This population correlation coefficient is represented by ρ (“rho”) and is a parametric measure.</p>
+<p>Pearson correlation indicates:</p>
+<ul>
+<li><p>Whether there is a statistically significant linear relationship between two continuous variables</p></li>
+<li><p>It also shows the strength of this linear relationship (i.e., how close the relationship is to being a perfectly straight line)</p></li>
+<li><p>Finally, it reveals the direction of this linear relationship (increasing or decreasing)</p></li>
+</ul>
+<p>It is however important to note that Pearson Correlation cannot address non-linear relationships or relationships among categorical variables. To address relationships that involve categorical variables and/or non-linear relationships, you need to consider the equivalent non-parametric test (e.g., Spearman’s rank correlation).</p>
+<p>Also, while Pearson Correlation reveals <em>associations</em> among (continuous) variables, you should remember that “<em>Correlation</em> <em>does not imply causation,</em>” no matter how large the correlation coefficient is.</p>
+<p><strong>Interpretation</strong>- The correlation coefficient (as indicated in the upper-right figure), is <strong>-0.968</strong>. This r-value indicates a robust negative linear correlation, given its proximity to -1 and negative sign. This strong negative linear correlation suggests that data points should closely cluster around a downward-sloping regression line, (<em>which aligns with the graph above</em>). Consequently, the presence of a strong negative linear relationship between Age and Price supports the continuation of linear regression analysis.</p></li>
+<li><p>Regression equation for the data.</p>
+<p>Because our goal here is to predict the price of 4-year-old Corvettes, let's modify the data variable before we proceed. Under the "Age" variable, enter the number "4" after the last row. Also, at the last row of the "Price" variable, enter a dot "." This way, we're telling SPSS that we want a prediction for this value and not to include the value in any other computations.</p>
+<p><img src="images/Cor_pred_data.PNG" class="img-fluid"></p>
+<p>Select Analyze &gt; Regression &gt; Linear. Select "Price" as the dependent variable and "Age" as the independent variable. Click "Statistics," select "Estimates" and "Confidence Intervals" for the regression coefficients, select "Model fit" to obtain r2, and click "Continue."</p>
+<p>Click "Plots," select "Normal Probability Plot" of the residuals and click "Continue." Click "Save," select "Unstandardized" predicted values, select "Unstandardized" and "Studentized" residuals, select "Mean" (to obtain a confidence interval output in the Data Window) and "Individual" (to obtain a prediction interval output in the Data Window) at the 95% level, and click "Continue." &nbsp;Finally, click "OK" to run the analysis.</p>
+<p><img src="images/regression_equation_output.PNG" class="img-fluid"></p>
+<p>From above, the regression equation is: Price = 29160.194 – (2790.291)(Age). So what if a newly sold Corvettes was 10years old? What would be the price? <em>Y</em> = 29160.194 – (2790.291)(10) which equals ~ $1257.284.</p></li>
+<li><p>Graph the regression equation and the data points</p>
+<p>Another way to visualize our regression line is through a scatterplot. Click on <strong>Graphs</strong>, then <strong>Scatter/Dot</strong>. In the Scatter/Dot dialog box that appears, be sure "Simple Scatter" is selected and then click&nbsp;<strong>Define</strong>. Move "Price" to the "Y Axis" box and move "Age" to the "X Axis" box and then click&nbsp;<strong>OK</strong>. A simple scatterplot should appear in your Output Viewer window. Double click the graph to show the "Chart Editor" window. Now, click&nbsp;<strong>Elements</strong> and then click&nbsp;<strong>Fit Line at Total</strong>. Now your scatterplot displays the linear regression line computed above while also providing you with the regression equation and the R squared value. This is a good way to double-check that we've written our equation correctly.</p>
+<p><img src="images/regression_plot.PNG" class="img-fluid"></p></li>
+<li><p>Identify the Outliers and potential influential observations</p>
+<p>From the plot, there seem to be no points that lie far from the cluster of data points or far from the regression line; thus, no possible outliers.</p></li>
+<li><p>Compute and interpret the coefficient of determination, r<sup>2</sup>.</p>
+<p><img src="images/model_summary_r2.PNG" class="img-fluid"></p>
+<p>The r<sup>2</sup> = 0.937; therefore, about 93.7% of the variation in the price data is explained by age. I.e., as the car gets older, the value/price drops! &nbsp;The regression equation appears to be very useful for making predictions since the value of r<sup>2</sup> is close to 1.</p>
+<p>Note- we also have adjusted R-square. R-square technically measures the variation of a regression model (variation in Y given x). R-squared either increases or remains the same when new predictors are added to the model. Adjusted R-squared measures the variation for a multiple regression model, and helps you determine goodness of fit. For the purpose of this SLR (one predictor, we are not adding more), so we can decide to intepret any of them. But if you have multiple predictors, you may want to look into Adj. R2)!</p></li>
+<li><p>Residuals</p></li>
+</ol>
+<pre><code>The residuals and standardized values (as well as the predicted values, the confidence
+
+interval endpoints, and the prediction interval endpoints) can be found in the data window.
+
+![](images/Residuals.PNG)
+
+To create a residual plot, select Graphs\&gt; Scatter/Dot\&gt;Simple. Select &nbsp;the residuals (RES_1) as the Y Axis variable and Age as the X Axis variable. Click \"Titles\" to enter \"Residual Plot\" as the title for your graph, and click \"Continue\". Click \"OK\".
+
+Double-click the resulting graph in the output window, select \"Options\" \&gt; \"Y Axis Reference Line\", select the \"Reference Line\" tab in the properties window, add position of line \"0\", and click \"Apply\". Click the close box to exit the chart editor.
+
+Do the same scatter plot to create a studentized residual plot. Select the SRES as the Y axis in this case (Age remains the X axis). Set the title and enter "Studentized Residual Plot".
+
+![](images/Residual_plot.PNG){width="100%"}
+
+![](images/studentized_regression_plot.PNG)
+
+Also, to assess the normality of the residuals, consult the P-P Plot from the regression output.
+
+![](images/normal_p-p_plot.PNG)
+
+**Interpretation**- The residual plot shows a random scatter of the points (independence) with a constant spread (variance). Also, the studentized residual plot shows a random scatter of the points (independence) with a constant variance and with no values beyond the ±2 standard
+
+deviation reference lines (no outliers). The normal probability plot of the residuals shows the points
+
+close to a diagonal line; therefore, the residuals appear to be approximately normally distributed.
+
+Thus, we have evidence to conclude that the assumptions for regression analysis appear to be met.</code></pre>
+<ol start="8" type="1">
+<li><p>Question - <em>Using 5% significance level, do the data provide sufficient evidence to conclude that the</em></p>
+<p><em>slope of the population regression line is not 0 and, hence, that age is useful as a predictor</em></p>
+<p><em>of sales price for Corvettes</em>?</p>
+<p>Here, we need to state the hypothesis. The hypothesis from the question above is that-</p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta = 0\)</span> (Age is not a useful predictor of price.)</p>
+<p><span class="math inline">\(H_a\)</span>: <span class="math inline">\(\beta \neq 0\)</span> (Age is a useful predictor of price.)</p>
+<p>Now that we’ve done that, remember our alpha = 0.05 and our critical value or rejection region is that we should reject the null hypothesis if alpha is less than 0.05. Finally, to answer the question, you can choose your test Statistic (choose either the T-test method or the F-test method- not both!). Check the regression output and see the “coefficient”. From the result of the regression, you can see that T = –10.887, and p-value = &lt;0.001</p>
+<p><img src="images/regression_coeff.PNG" class="img-fluid"></p>
+<p><strong>Interpretation</strong>- Since the P-value &lt; 0.05, we have evidence to reject the null hypothesis. In other words, we have enough evidence to conclude that the slope of the population regression line is not zero. In other words, age is a useful predictor of price for Corvettes.</p></li>
+<li><p><em>Obtain and interpret a 95% confidence interval for the slope, β , of the population regression line that relates age to sales price for Corvettes.</em></p>
+<p>Look at the regression coefficient above, We are 95% confident that the slope of the true regression line is somewhere between –3381.295 and –2199.288. In other words, we are 95% confident that for every year older Corvettes get, their average price decreases somewhere between $3,381.295 and $2,199.288.</p></li>
+<li><p><em>Obtain a point estimate for the mean sales price of all 4-year-old Corvettes.</em></p>
+<p>Look at the data window (last row), the point estimate (PRE_1) is 17999.02913 dollars ($17,999.02913).</p></li>
+<li><p><em>Determine a 95% confidence interval for the mean sales price of all 4-year-old Corvettes.</em></p>
+<p>Still on the last row of the data table, we are 95% confident that the mean sales price of all four-year-old Corvettes is somewhere between $16,958.46042 (LMCI_1) and $19,039.59783 (UMCI_1).</p></li>
+<li><p><em>Find the predicted sales price of Jack Smith's selected 4-year-old Corvette</em>.</p>
+<p>The predicted sales price is 17999.02913 dollars ($17,999.02913).</p></li>
+<li><p><em>Determine a 95% prediction interval for the sales price of Jack Smith's 4-year-old</em></p>
+<p><em>Corvette.</em></p>
+<p>We are 95% certain that the individual sales price of Jack Smithʼs Corvette will be</p>
+<p>somewhere between $14,552.91726 (LICI_1) and $21,445.14099 (UICI_1).</p></li>
+</ol>
 
 
+</section>
 </section>
 </section>
 
