@@ -79,7 +79,7 @@ Interpretation- **The points seem to follow a linear pattern, although with a ne
 
     Also, while Pearson Correlation reveals *associations* among (continuous) variables, you should remember that "*Correlation* *does not imply causation,*" no matter how large the correlation coefficient is.
 
-    **Interpretation**- The correlation coefficient (as indicated in the upper-right figure), is **-0.968**. This r-value indicates a robust negative linear correlation, given its proximity to -1 and negative sign. This strong negative linear correlation suggests that data points should closely cluster around a downward-sloping regression line, (*which aligns with the graph above*). Consequently, the presence of a strong negative linear relationship between Age and Price supports the continuation of linear regression analysis.
+    **Interpretation**- The correlation coefficient is **-0.968**. This r-value indicates a robust negative linear correlation, given its proximity to -1 and negative sign. This strong negative linear correlation suggests that data points should closely cluster around a downward-sloping regression line, (*which aligns with the graph above*). Consequently, the presence of a strong negative linear relationship between Age and Price supports the continuation of linear regression analysis.
 
 3.  Regression equation for the data.
 
