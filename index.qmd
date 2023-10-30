@@ -323,7 +323,7 @@ Given that the formulas for $b_0$ and $b_1$ are derived using the least square a
 
 Ideally, you won't have to worry about the formulas for $b_0$ and $b_1$ and this is because, there are so many statistical software that can find the least squares for you. However, a question that often pop-up is that- why do we try to minimize the sum of *squared* errors rather than just the errors themselves? The reason is that if we didn't square the residual error above, the positive and negative residual errors would cancel each other out when we sum them, consequently yielding 0. This approach is referred to as *least squares* because it aims to *minimize* the sum of *squared* errors, thereby seeking to determine *the least squares.*
 
-#### Example of Least Square Approach using data  
+#### Example of Least Square Approach using data
 
 For this, we would use the "car" dataset. This is an open dataset available in R software (and online). Very briefly, it shows the relationship between the speed and stopping distance of cars. You can downoad it from our google folder [here](https://drive.google.com/drive/folders/1JcI_Mxl-uiqD-bH8M8v6545kONw2ApE3?usp=sharing). load this dataset to your SPSS.
 
@@ -346,29 +346,29 @@ recall speed = x, dist = y.
 
 1\. Compute the means of speed and dist:
 
- - Go to "Data\>Aggregate" in the top menu.
+-   Go to "Data\>Aggregate" in the top menu.
 
- - Drag the "speed" and "dist" to the "Aggregated variables.
+-   Drag the "speed" and "dist" to the "Aggregated variables.
 
- - In the "Function" box, select "mean" (if not already selected).
+-   In the "Function" box, select "mean" (if not already selected).
 
- - Click "OK" .
+-   Click "OK" .
 
 2\. Compute sum of speed and dist- i.e., Sxy
 
- - Go to "Transform".
+-   Go to "Transform".
 
- - Choose "Compute Variable."
+-   Choose "Compute Variable."
 
- - In the "Compute Variable" dialog, give the new variable a name (Sxy).
+-   In the "Compute Variable" dialog, give the new variable a name (Sxy).
 
- - In the numeric expression box, type SUM(speed - speed_mean) \* (dist - dist_mean).
+-   In the numeric expression box, type SUM(speed - speed_mean) \* (dist - dist_mean).
 
- - Click "OK" to create the new variable.
+-   Click "OK" to create the new variable.
 
- - Finally to create count the SUM of XY (because SPSS did not compute that automatically), click on "Data\>Aggregate". Then, drag Sxy to the "summaries of variable". Click on Function and select "Sum" (instead of Mean).
+-   Finally to create count the SUM of XY (because SPSS did not compute that automatically), click on "Data\>Aggregate". Then, drag Sxy to the "summaries of variable". Click on Function and select "Sum" (instead of Mean).
 
- - Click "OK" to see the sum of XY
+-   Click "OK" to see the sum of XY
 
 **Follow the above procedure to do the same thing for Sxx and Syy.** Note that you don't have to calculate the speed_mean or dist_mean again. So technically, you're repeating step 4 & 5 above.
 
@@ -393,7 +393,7 @@ $\hat{\beta_1}$ = 3.93
 
 $\hat{\beta_0}$ = -17.98
 
-#### **Interpretation** 
+#### **Interpretation**
 
 **What do these values tell us about our dataset?**
 
@@ -539,3 +539,342 @@ Hint- Go to transform\>compute variable. Then Select the SSReg_sum/SST_sum. Your
 Interpretation- From our example dataset, our calculated $R^2$ = 0.65. Thus, we can conclude that 65% of the observed variation in stopping distance can be explained by the linear relationship with speed.
 
 #End.
+
+# Chapter 6- Factor Analysis
+
+Factor analysis is a method of dimensionality (data) reduction. In research, it is common to encounter situations where we have to quantify phenomena that cannot be directly accessed (known as a latent variable) and factor analysis can be used to seek underlying unobservable (latent) variables that are reflected in the observed variables (manifest variables). Imagine you're conducting a survey to measure "burnout" and interested in determining whether the questions in the survey shows common response patterns, essentially forming a unified concept or construct. Factor analysis operates under the fundamental premise that within a group of observed variables, there exist underlying factors, which are fewer in number than the observed variables themselves, capable of explaining the connections among these variables. Note that we cannot measure burnout directly as it has many dimensions. However, it is possible to measure different aspects of burnout including motivation and stress levels. With this, it may be possible to know whether these different dimensions represent a single variable. Put simply, are these different (observable) dimensions driven by the same underlying variable?
+
+To further illustrate, suppose you've carried out a survey to gather responses on individuals' anxiety levels related to using SPSS. Since we cannot measure SPSS anxiety directly, one may ask whether all these survey items genuinely assess what we can call "SPSS Anxiety."
+
+For this lab, we will use the SAQ (SPSS Anxiety Questionnaire) as introduced by Andy Field (see- *Page 584 of the book Discovering Statistics Using IBM SPSS Statistics).*
+
+For the sake of simplicity, we'll focus on the "[SAQ10](https://drive.google.com/drive/folders/1AeDF4phZO-N62LHoI4Jos1Tx-v0YCRw2?usp=sharing)," comprising the first ten items within the SAQ. You can download the data [here](https://drive.google.com/file/d/1i409ic5MvaDlu--tfaWwRNgERACGhKZh/view?usp=sharing). The SAQ10 questionnaire comprises the following questions:
+
+1.  Statistics makes me cry
+
+2.  My friends will think I\'m stupid for not being able to cope with SPSS
+
+3.  Standard deviations excite me
+
+4.  I dream that Pearson is attacking me with correlation coefficients
+
+5.  I don\'t understand statistics
+
+6.  I have little experience of computers
+
+7.  All computers hate me
+
+8.  I have never been good at mathematics
+
+9.  My friends are better at statistics than me
+
+10. Computers are useful only for playing games
+
+To begin with, let's calculate the Pearson Correlation of the data
+
+To do this in SPSS, you can go to *Analyze\>Correlate\>Bivariate*:
+
+![](images/Cor_plot_2.png){fig-align="center"}
+
+From the output, it's evident that there are correlations between most of the items, spanning from a low of r = -0.38 for the pair q3 and q7 to a high of r = 0.51 for Items 6 and 7. Given the relatively high correlations among these questions, this dataset is a suitable candidate for factor analysis. Recall that the primary objective of factor analysis is to model the relationship between variables with a smaller (latent) variables. These relationships can be divided into multiple components.
+
+### Variance Partitioning in factor analysis
+
+Given that the goal of factor analysis is to model the "interrelationships" among variables, so instead of the mean, the focus here would be the variance and covariance. I.e, how those items/variables vary or covary.
+
+In factor analysis, the assumption here is that variance can be partitioned into two key types: *common* and *unique* variance.
+
+-   **Common variance** denotes the shared variance among a set of items. Items exhibiting strong correlations will have a higher degree of shared variance.
+
+    -   **Communality** (also called $h^2$) is a measure of common variance and ranges between 0 and 1. Values closer to 1 indicate that the derived factors explain a greater portion of the variance within an individual item.
+
+-   **Unique variance** represents any part of the variance that is not common. It can be divided into two:
+
+    -   **Specific variance**: This variance is unique to a particular item. For instance, Item 4 "All computers hate me" might have variance linked to anxiety about computers apart from anxiety related to using SPSS.
+
+    -   **Error variance:**  Arising from measurement inaccuracies and essentially accounting for any unexplained variance not attributed to common or specific sources.
+
+The figure below illustrates the interconnections between these concepts:
+
+![](images/Variance_diag.png){fig-align="center"}
+
+Total variance comprises both common and unique variance, with unique variance further divided into specific and error variance components. When the total variance is = 1, communality is represented by ℎ², and the unique variance can be calculated as 1 - ℎ².
+
+In the context of our SAQ10 example, SPSS Anxiety contributes to the common variance shared among all the items (that is what we want to measure anyway). However, each individual item contains both specific and error variance. Let's take Item 10, for instance, which states, "Computers are useful only for playing games." While SPSS Anxiety explains a portion of the variance in this item, there may exist systematic factors like technophobia, as well as non-systemic factors that cannot be attributed to either SPSS anxiety or technophobia, such as receiving a speeding ticket just before arriving at the survey center (**a measurement error**). Now that we have an idea of variance partioning, we can proceed to conduct our initial factor analysis. It's worth noting that the assumptions we make regarding the partitioning of variance influence the choice of analysis we employ.
+
+## Factor Analysis in SPSS
+
+As a researcher or analyst, our goal in factor analysis is dimensionality reduction. Put simply, to reduce the number of variables to explain and interpret the results.
+
+We can do this using two steps: *factor extraction* and *factor rotation*
+
+Factor extraction involves making a decision regarding both the model type and the quantity of factors to be extracted. Following factor extraction, factor rotation can be used with the aim of attaining a straightforward arrangement to enhance interpretability.
+
+### Factor Extraction
+
+There are two approaches to factor extraction which follows different approaches to variance partitioning: a) *principal components analysis* and b) *common factor analysis*.
+
+### Principal Components Analysis
+
+Unlike factor analysis, principal components analysis (PCA) assumes that there is no unique variance and the total variance is equal to common variance. Recall that we said total variance can be partitioned into *common* and *unique* variance. Thus, if there is no unique variance then common variance is equal to total variance. In other words, if the total variance is 1, then the common variance is equal to the communality = $h^2$ = 1 (see the figure above).
+
+#### Do this in SPSS- run a PCA with 10 components
+
+The objective of a PCA is to replicate the correlation matrix using a reduced number of components that are linear combinations of the original set of items (we shall talk a bit more on PCA during next tutorial). Although the following analysis deviates from the main PCA approach, for pedagogy reason, we will initiate the process by extracting the maximum number of components. This will help us determine the optimal number of components for extraction at a later stage.
+
+To do this in SPSS, go to:
+
+1.  Analyze\> Dimension Reduction \>Factor. You can move all the observed variables over the Variables: box to be analyzed.
+2.  Click on Extraction, then under the Method, select Principal components and make sure to Analyze the Correlation matrix.
+3.  We also request the Unrotated factor solution and the Scree plot. Under Extract, choose Fixed number of factors, and under Factor to extract enter 10.
+4.  We also want to increase the Maximum Iterations of Convergence to 100.
+
+#### Eigenvalues and Eigenvectors
+
+Before we move on, let\'s do a quick introduction of eigenvalues and eigenvectors.[\
+](https://stats.idre.ucla.edu/wp-content/uploads/2018/05/fig4-2a.png)
+
+**Eigenvalues** represent denote the total variance that a specific principal component can account for. While theoretically they can be either positive or negative, in practice, they exclusively account variance and always positive.
+
+-   If eigenvalues \> 0, then that's good.
+
+-   Given that variance is inherently non-negative, negative eigenvalues signal issues with the model's stability.
+
+-   Eigenvalues close to zero suggest the presence of multicollinearity among items, as the first component absorbs nearly all the variance.
+
+Eigenvalues are also the summation of squared component loadings for all items within each component. This characterizes the extent to which a principal component can explain the variance in each item.
+
+**Eigenvectors** serve as a weight for each eigenvalue. The eigenvector $\times$ the square root of the eigenvalue = the **component loading** (which can be interpreted as the correlation of each item with the principal component). In other words, eigenvectors can be calculated as the component loading divided by the square root of the eigenvalue.
+
+$$eigenvector = \dfrac {component \hspace1ex loading} {\sqrt{ \left( eigen \hspace1ex value \right)}} $$
+
+For this dataset, given that the eignevalue of the first item = 3.301 (check the "total variance explained" table) and the component loading for item 1 =0.637 (check the component matrix), we can then compute the eigenvector associated with the first item using the above formula
+
+component loading = 0.637, eigenvalue = 3.301
+
+$$eigenvector = \dfrac {0.637} {\sqrt{ \left( 3.301 \right)}} $$
+
+eigenvector of the first item = 0.35
+
+Note that the component loading = 0.637- Thus, we can say that the correlation of the first item with the first component is 0.637 (about 63.7%).
+
+#### Component Matrix
+
+The components can be seen as the correlation between each item and the respective component. Each item is associated with loadings for all 10 components. For instance, Item 1 is correlated at 0.637 with the first component, 0.182 with the second component, and -0.360 with the third, etc.
+
+The square of each loading represents the proportion of variance explained (think of it as an $R^2$ statistic) by a particular component. For Item 1, $(0.637)^2$=0.406. This can be interpreted that 40.6% of its variance is explained by the first component. Also, $(0.182)^2$=0.033 or 3.3% of the variance in Item 1 is explained by the second component. Note that the total variance explained by both components is thus 40.6%+3.3%=43.9%. When you accumulate these squared loadings progressively through the components, the total sums up to 1 or 100%. This is referred to as the **communality**, and in a PCA the communality for each item equates to the total variance.
+
+![](images/component_matrix_1.PNG){fig-align="center"}
+
+N.B: If you sum the squared component loadings across the components (columns), you'd get the communality estimates for each item. Also, if you sum each squared loading down the items (rows), you'd get the **eigenvalue** for each component.
+
+For example, if you want to manually get the first eigenvalue, take a square of each item in column 1 and add them together- you'd get = 3.301 (the eigenvalue!). And if you'd do this for other columns, you'll get ten eigenvalues for ten components- and that leads us to the next table.
+
+#### **Total Variance Explained**
+
+Recall that the eigenvalue = overall variance that can be explained by a given principal component. Starting with the first component, each subsequent component is derived by factoring out the influence of the previous one. Therefore the first component explains the most amount of variation, and the last component explains the least. If you look at the "Total Variance Explained" table, you'll find the total variance explained by each component. For instance, Component 1 = 3.301, or (3.301/10)%=33.01% of the total variance. Because we extracted the same number of components as there are items, the Initial Eigenvalues column should be the same as the Extraction Sums of Squared Loadings column.
+
+![](images/total_var_1.PNG){fig-align="center"}
+
+#### Selecting the optinal number of components to extract
+
+Since the goal of running a PCA is to reduce our set of variables down, it would be useful to have a criterion for selecting the optimal number of components that are of course smaller than the total number of items. One criterion is the choose components that have eigenvalues greater than 1. Under the Total Variance Explained table, we see the first two components have an eigenvalue greater than 1. This can be confirmed by the Scree Plot which plots the eigenvalue (total variance explained) by the component number.
+
+Given that the aim of conducting a PCA is to reduce our variable set, it becomes valuable to establish a criterion for selecting the optimal number of components, which should ideally be fewer than the total number of items. One such criterion involves selecting components with eigenvalues \> 1. If you look at the "Total Variance Explained" table, you'd see that the first three components possess eigenvalues \> 1. We can also further confirm this by looking at the Scree Plot, which charts the eigenvalue (total variance explained) against the component number.
+
+![](images/scree_plot_1.PNG){fig-align="center"}
+
+Remember that we selected the Scree plot here- dimension reduction\>factor\>extraction\>scree plot. So, the scree plot should be produced automatically.
+
+The first component consistently accounts for the highest total variance, while the last component will always explains the least. However, the main question is: where do we see the most significant drop in variance? For this example, if you look at component 3, it shows an "elbow" joint, signifying that it might not yield substantial benefits to continue extracting more components after this. There exist varied interpretations of the scree plot, but some suggest selecting the number of components to the left of this "elbow." Following this criterion would lead us to opt for just two components. Another, more subjective perspective on the scree plot proposes that any number of components within the range of 1 to 4 could be valid, and additional supporting evidence would be beneficial.
+
+Certain criteria propose that the total variance explained by all components should fall within the range of 70% to 80% variance, which in this scenario would indicate about five to six components. However, as noted by Andy Field (*the author of Discovering Statistics using IBM SPSS Statistics*), this approach may be implausible in social science research, where extracted factors typically explain only 50% to 60% of the variance.
+
+Choosing the number of components involves a degree of subjectivity and ideally necessitates input from the entire research team. But for now, let's suppose we consulted Dr. Steven Shaw, and he believes that a three-component solution aligns with the study's objectives. Therefore, we can proceed with the analysis based on his input.
+
+#### PCA with 3 components
+
+To run the three component PCA is just as easy as running the 10 component solution we did before. The only difference is under Fixed number of factors -- Factors to extract you have to enter 3.
+
+Follow the same steps we did before
+
+go to:
+
+1.  Analyze\> Dimension Reduction \>Factor. You can move all the observed variables over the Variables: box to be analyzed.
+2.  Click on Extraction, then under the Method, select Principal components and make sure to Analyze the Correlation matrix.
+3.  Request the Unrotated factor solution and the Scree plot. Under Extract, choose Fixed number of factors, and under Factor to extract enter **3**.
+4.  Increase the Maximum Iterations of Convergence to 100.
+
+Now, let's focus on the differences in the output between the ten and three-component solution. If you look at the Total Variance Explained, we can see that the Initial Eigenvalues no longer equals the Extraction Sums of Squared Loadings. Specifically, The main difference is that there are only three rows of Extraction Sums of Squared Loadings, and the cumulative percent variance goes up to 56.671%.
+
+![](images/Total_var_3pc.PNG){fig-align="center"}
+
+Also, we can see that the Component Matrix has the same loadings as the ten-component solution but instead of ten columns it\'s now three columns.
+
+![](images/component_matrix_3pc.PNG){fig-align="center"}
+
+Interpretations- Again, we will interpret Item 1 as having a correlation of 0.637 with Component 1. From the table, we can see that q07 (*All computers hate me*) has the highest correlation with Component 1 and q02 (*My friends will think I'm stupid for not being able to cope with SPSS*) has the lowest. Also, we see that q9 has the highest correlation with Component 2 and q10 the lowest. Similarly, we can see that q06 has the highest with component 3 and q09 the lowest.
+
+#### Test:
+
+True or False
+
+1.  The elements of the Component Matrix are correlations of the item with each component.
+
+2.  The sum of the squared eigenvalues is the proportion of variance under Total Variance Explained.
+
+3.  The Component Matrix can be thought of as correlations and the Total Variance Explained table can be thought of as $R^2$.
+
+### Communalities
+
+Communality is calculated by summing the squares of the component loadings for the number of components you have extracted.
+
+Look at the SPSS output you will see a table of communalities.
+
+![](images/communalities_3pc.PNG){fig-align="center"}
+
+Given that PCA is an iterative estimation process, it starts with 1 as an initial estimate of the communality (since this is the total variance across all 10 components), and then proceeds with the analysis until a final communality is extracted. Now, as a practice exercise, let\'s manually calculate the first communality from the Component Matrix. The first ordered is (0.637,0.182, -0.360) which represents the correlation of the first item with Component 1, 2, and 3.
+
+$$h^2 = (0.637)^2 \hspace1ex + \hspace1ex (0.182)^2 \hspace1ex + \hspace1ex (-0.360)^2$$
+
+If you do this, you should get \~= 0.569 (extraction 1 under the communality table above).
+
+*Recall that to get the communality, you should sqaure the loadings and sum down the components*
+
+Going back to the Communalities table, if you sum down all 10 items (rows) of the Extraction column, you get 5.667. Also, If you go back to the Total Variance Explained table and summed the first three eigenvalues you also get 3.301+1.333+1.033=5.667. Is that surprising? **Basically this implies that summing the communalities across all items is the same as summing the eigenvalues across all components**.
+
+#### Test
+
+1\. *In a PCA, when would the communality for the Initial column be equal to the Extraction column?*
+
+Hint- When you run a full component PCA as the number of items. In this case, 10-component PCA.
+
+**True or False**
+
+1.  The eigenvalue represents the communality for each item.
+
+2.  For a single component, the sum of squared component loadings across all items represents the eigenvalue for that component.
+
+3.  The sum of eigenvalues for all the components is the total variance.
+
+4.  The sum of the communalities down the components is equal to the sum of eigenvalues down the items.
+
+**Solutions:**
+
+1\. F, the eigenvalue = total communality across all items for a single component, 2. T, 3. T, 4. F (we sum communalities across items, and sum eigenvalues across components, which should be equal- we just did that now).
+
+### Common Factor Analysis
+
+The difference between principal components analysis (PCA) and common factor analysis lies in how they partition variance. Both methods are used for dimensionality reduction of the dataset to a smaller number of unobserved variables. However, PCA assumes that common variances account for all the total variance, while common factor analysis presumes that total variance can be divided into common and unique variance. The latter assumption is often more realistic, acknowledging that the measurement of the item set may not be perfect. The unobserved or latent variable responsible for common variance is termed a factor, hence the name "factor analysis."
+
+Another significant difference between PCA and factor analysis pertains to the objective of the analysis. If the goal is simply to reduce the list of variables into a linear combination of smaller components, you can just run a *PCA*. However, if there is a prior knowledge that a latent construct underlies the interrelationships among the items, *factor analysis* may be more suitable.
+
+In our example, we assume the existence of a construct ("SPSS Anxiety") that explains the correlations among all items in the SAQ10. However, it's recognized that SPSS Anxiety cannot account for all the shared variance among SAQ items, so we can also model the unique variance.
+
+From the PCA result above, we can run a three-factor extraction.
+
+#### Run a Common Factor Analysis with 3 factors in SPSS
+
+To do this in SPSS, use the same steps as running a PCA above-Analyze\> Dimension Reduction \> Factor. Select "Extraction" and under Method choose **Principal axis factoring**. Let's keep the Maximum Iterations for Convergence at 100 and run the analysis.
+
+Note the main difference is under the EXTRACTION METHOD- here, we see PAF (Principal Axis Factoring) instead of PC (Principal Components). We will get three tables and 1 scree plot as output, Communalities, Total Variance Explained and Factor Matrix.
+
+Let\'s go over each of these and compare them to the PCA output.
+
+Communalities of the PAF
+
+![](images/communalities_3pc_paf.PNG){fig-align="center"}
+
+From this table, the most obvious difference between this communalities and the one we did earlier for PCA is that the initial extraction is no longer 1. Remember that for a PCA, we assume the total variance = common variance or communality (so we pick 1 as our best initial guess). However, for principal axis factoring, instead of guessing 1 as the initial communality, it chooses the squared multiple correlation coefficient $R^2$.
+
+Let's see this in action- at least for first item in the list  We can do this by running a linear regression where q01 is the response variable and Items 2 -10 are predictors.
+
+#### Test
+
+RUn a linear regression in SPSS-
+
+Hint- *Analyze \> Regression \>Linear and enter q01 under Dependent and q02 to q10 under Independent(s)*.
+
+You should get output similar to the one below
+
+![](images/model_sum_q01.PNG){fig-align="center"}
+
+Note that our $R^2$ here = 0.295 and that matches the initial communality estimate for q01 (see the communality table above). Equally, we can do the remaining 9 linear regressions in order to get all ten communality estimates but we don't have to since SPSS did that already (the communality table). Similar to PCA,  factor analysis also utilizes an iterative estimation process to obtain the final estimates under the Extraction column. Finally, if we sum all the rows of the extraction column, and we get 3.98. This represents the total common variance shared among all items in our 3-factor analysis.
+
+### Total Variance Explained 
+
+Let's check the Total Variance Explained table. If we compare this to the table from the PCA, we can see that the Initial Eigenvalues are the same and includes 10 rows for each \"factor\".
+
+![](images/Total_var_3pc_paf-01.PNG){fig-align="center"}
+
+Indeed, SPSS leverages the information obtained from the PCA analysis for use in the factor analysis. The factors used in factor analysis are essentially the components found in the "Initial Eigenvalues" column. The primary distinction lies in the "Extraction Sums of Squared Loadings" column. Here, each corresponding entry in the Extraction column is lower than the Initial column. ***This outcome aligns with our expectations, as we assume that the total variance can be divided into common and unique variance.*** Consequently, the common variance explained will be relatively reduced. From the result, we can see that Factor 1 accounts for 27.342% of the variance, Factor 2 explains 6.889% of the variance, while Factor 3 explains 5.543% of the variance. Much like in PCA, the more factors you extract, the less variance is explained by each successive factor.
+
+####  Test
+
+In theory, when would the percent of variance in the Initial column ever equal the Extraction column?
+
+(***Hint***- When there is no unique variance- recall that PCA assumes this whereas common factor analysis does not, so this is in theory and not in practice)
+
+### Factor Matrix
+
+If you remember, we set the number of iteration to 100. Like I said before, this is necessary to reach convergence. Look at the table, you'd see that 49 iterations were required. If we had simply used the default 25 iterations in SPSS, we would not have reached convergence or obtained an optimal solution. Hence, in practice, it\'s always good to increase the maximum number of iterations.
+
+![](images/factor_matrix_paf_1-01.PNG){fig-align="center"}
+
+From the table, the elements of the Factor Matrix table are called **loadings** and denotes the correlation of each item with the corresponding factor. Similar to PCA, if we square each loading and sum down the items (rows), we would get the total variance explained by each factor. N.B.: they are no longer called eigenvalues as in PCA but *Sums of Squared Loadings*.
+
+Let\'s calculate this for Factor 1:
+
+$$(0.575)^2 + (-0.280)^2 + (-0.602)^2 + (0.640)^2 + (0.561)^2 + (0.596)^2 + (0.662)^2 + (0.456)^2 + (-0.272)^2 + (0.405)^2$$
+
+$== 2.73$ which matches the first row under the Extraction column of the Total Variance Explained table. We can repeat this for Factor 2 and get the same results for the second row (0.689).
+
+Also, we can get the communality estimates by adding the squared loadings across the factors (columns) for each item. For example, for q01:
+
+$(0.575)^2 + (0.60)^2 + (0.298)^2 = 0.423$
+
+N.B.: these results match the value of the Communalities table for q01 (see the Extraction column). This means that the sum of squared loadings across factors $=$ communality estimates for each item. You can do the same for all other items on the list and you'd get the same result as in "Extraction" of the communality table.
+
+### The relationship between the three tables
+
+To understand the relationships among the three tables, let's begin with the Factor Matrix (referred to as the Component Matrix in PCA). We'll use the term "factor" to describe components, applicable to PCA as well. Within this matrix, you'll find the elements that signify the correlation between each item and each respective factor.
+
+Now, when you square each of these elements, you obtain squared loadings, which represent the proportion of variance explained by each factor for each item. The cumulative sum of these squared loadings across factors provides the proportion of variance explained collectively by all the factors in the model. This is known as common variance or communality, and it's the outcome displayed in the Communalities table.
+
+For the Factor Matrix, if you square the loadings and sum them down the items, you get the Sums of Squared Loadings (in PAF) or eigenvalues (in PCA) for each factor. These values now become the elements within the Total Variance Explained table.
+
+When you sum down the rows, which is to say, you add up the values along each factor, under the Extraction column, you arrive at a total, let's say, $2.734 + 0.689 + 0.554 = 3.977$. This value represents the overall (common) variance explained by the three-factor solution for all ten items. Equivalently, because the Communalities table represents the total common variance accounted for by both factors for each item, adding up the values down the items in the Communalities table similarly yields the total (common) variance explained.
+
+$(0.423)+(0.308)+(0.465)+(0.465)+(0.347)+(0.709)+(0.477)+(0.271) + (0.331) + (0.182)=3.978$ -\> *the same result we obtained from the Total Variance Explained table*.
+
+To summarize:
+
+1.  By squaring the elements within the Factor Matrix, you get the squared loadings.
+
+2.  The summation of the squared loadings from the Factor Matrix across the factors provides the communality estimates for each item, as found in the Extraction column of the Communalities table.
+
+3.  Summing the squared loadings within the Factor Matrix along the items yields the Sums of Squared Loadings (in PAF) or eigenvalues (in PCA) for each factor across all items.
+
+4.  When you add up the eigenvalues or Sums of Squared Loadings in the Total Variance Explained table, you get the total common variance explained.
+
+5.  Adding up all the items in the Communalities table is equivalent to summing the eigenvalues or Sums of Squared Loadings down all the factors, which can be found under the Extraction column of the Total Variance Explained table.
+
+#### Test
+
+**True or False** (the following assumes a three-factor Principal Axis Factor solution with 10 items)
+
+1.  The entries within the Factor Matrix represent the correlations between each item and a factor.
+
+2.  Each squared element in the Factor Matrix for Item 1 represents the communality.
+
+3.  The summation of these squared entries in the Factor Matrix across all 10 items within Factor 1 corresponds to the first Sums of Squared Loading in the Extraction column of the Total Variance Explained table.
+
+4.  Adding all 10 items in the Extraction column of the Communalities table provides the total common variance explained by both factors.
+
+5.  The total common variance explained is calculated by summing all Sums of Squared Loading values in the Initial column of the Total Variance Explained table
+
+6.  The cumulative Sums of Squared Loadings in the Extraction column under the Total Variance Explained table represents the total variance,comprising both total common variance and unique variance
+
+7.  In common factor analysis, the sum of squared loadings is referred to as the eigenvalue.
+
+Hints- 1, 3,4 T, 2. F, it's the sum of the squared elements across factors, 5. F, sum all eigenvalues from the Extraction column of the Total Variance Explained table, 6. F, the total Sums of Squared Loadings represents only the total *common* variance excluding unique variance, 7. F, eigenvalues are only applicable for PCA.
