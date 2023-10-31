@@ -634,7 +634,7 @@ To do this in SPSS, go to:
 Before we move on, let\'s do a quick introduction of eigenvalues and eigenvectors.[\
 ](https://stats.idre.ucla.edu/wp-content/uploads/2018/05/fig4-2a.png)
 
-**Eigenvalues** represent denote the total variance that a specific principal component can account for. While theoretically they can be either positive or negative, in practice, they exclusively account variance and always positive.
+**Eigenvalues** denote the total variance that a specific principal component can account for. While theoretically they can be either positive or negative, in practice, they exclusively account variance and always positive.
 
 -   If eigenvalues \> 0, then that's good.
 
