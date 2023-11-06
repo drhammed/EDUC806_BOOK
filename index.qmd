@@ -552,13 +552,13 @@ For the sake of simplicity, we'll focus on the "[SAQ10](https://drive.google.com
 
 1.  Statistics makes me cry
 
-2.  My friends will think I\'m stupid for not being able to cope with SPSS
+2.  My friends will think I'm stupid for not being able to cope with SPSS
 
 3.  Standard deviations excite me
 
 4.  I dream that Pearson is attacking me with correlation coefficients
 
-5.  I don\'t understand statistics
+5.  I don't understand statistics
 
 6.  I have little experience of computers
 
@@ -631,7 +631,7 @@ To do this in SPSS, go to:
 
 #### Eigenvalues and Eigenvectors
 
-Before we move on, let\'s do a quick introduction of eigenvalues and eigenvectors.[\
+Before we move on, let's do a quick introduction of eigenvalues and eigenvectors.[\
 ](https://stats.idre.ucla.edu/wp-content/uploads/2018/05/fig4-2a.png)
 
 **Eigenvalues** denote the total variance that a specific principal component can account for. While theoretically they can be either positive or negative, in practice, they exclusively account variance and always positive.
@@ -709,7 +709,7 @@ Now, let's focus on the differences in the output between the ten and three-comp
 
 ![](images/Total_var_3pc.PNG){fig-align="center"}
 
-Also, we can see that the Component Matrix has the same loadings as the ten-component solution but instead of ten columns it\'s now three columns.
+Also, we can see that the Component Matrix has the same loadings as the ten-component solution but instead of ten columns it's now three columns.
 
 ![](images/component_matrix_3pc.PNG){fig-align="center"}
 
@@ -733,7 +733,7 @@ Look at the SPSS output you will see a table of communalities.
 
 ![](images/communalities_3pc.PNG){fig-align="center"}
 
-Given that PCA is an iterative estimation process, it starts with 1 as an initial estimate of the communality (since this is the total variance across all 10 components), and then proceeds with the analysis until a final communality is extracted. Now, as a practice exercise, let\'s manually calculate the first communality from the Component Matrix. The first ordered is (0.637,0.182, -0.360) which represents the correlation of the first item with Component 1, 2, and 3.
+Given that PCA is an iterative estimation process, it starts with 1 as an initial estimate of the communality (since this is the total variance across all 10 components), and then proceeds with the analysis until a final communality is extracted. Now, as a practice exercise, let's manually calculate the first communality from the Component Matrix. The first ordered is (0.637,0.182, -0.360) which represents the correlation of the first item with Component 1, 2, and 3.
 
 $$h^2 = (0.637)^2 \hspace1ex + \hspace1ex (0.182)^2 \hspace1ex + \hspace1ex (-0.360)^2$$
 
@@ -779,7 +779,7 @@ To do this in SPSS, use the same steps as running a PCA above-Analyze\> Dimensio
 
 Note the main difference is under the EXTRACTION METHOD- here, we see PAF (Principal Axis Factoring) instead of PC (Principal Components). We will get three tables and 1 scree plot as output, Communalities, Total Variance Explained and Factor Matrix.
 
-Let\'s go over each of these and compare them to the PCA output.
+Let's go over each of these and compare them to the PCA output.
 
 Communalities of the PAF
 
@@ -801,15 +801,15 @@ You should get output similar to the one below
 
 Note that our $R^2$ here = 0.295 and that matches the initial communality estimate for q01 (see the communality table above). Equally, we can do the remaining 9 linear regressions in order to get all ten communality estimates but we don't have to since SPSS did that already (the communality table). Similar to PCA,  factor analysis also utilizes an iterative estimation process to obtain the final estimates under the Extraction column. Finally, if we sum all the rows of the extraction column, and we get 3.98. This represents the total common variance shared among all items in our 3-factor analysis.
 
-### Total Variance Explained 
+### Total Variance Explained
 
-Let's check the Total Variance Explained table. If we compare this to the table from the PCA, we can see that the Initial Eigenvalues are the same and includes 10 rows for each \"factor\".
+Let's check the Total Variance Explained table. If we compare this to the table from the PCA, we can see that the Initial Eigenvalues are the same and includes 10 rows for each "factor".
 
 ![](images/Total_var_3pc_paf-01.PNG){fig-align="center"}
 
 Indeed, SPSS leverages the information obtained from the PCA analysis for use in the factor analysis. The factors used in factor analysis are essentially the components found in the "Initial Eigenvalues" column. The primary distinction lies in the "Extraction Sums of Squared Loadings" column. Here, each corresponding entry in the Extraction column is lower than the Initial column. ***This outcome aligns with our expectations, as we assume that the total variance can be divided into common and unique variance.*** Consequently, the common variance explained will be relatively reduced. From the result, we can see that Factor 1 accounts for 27.342% of the variance, Factor 2 explains 6.889% of the variance, while Factor 3 explains 5.543% of the variance. Much like in PCA, the more factors you extract, the less variance is explained by each successive factor.
 
-####  Test
+#### Test
 
 In theory, when would the percent of variance in the Initial column ever equal the Extraction column?
 
@@ -817,13 +817,13 @@ In theory, when would the percent of variance in the Initial column ever equal t
 
 ### Factor Matrix
 
-If you remember, we set the number of iteration to 100. Like I said before, this is necessary to reach convergence. Look at the table, you'd see that 49 iterations were required. If we had simply used the default 25 iterations in SPSS, we would not have reached convergence or obtained an optimal solution. Hence, in practice, it\'s always good to increase the maximum number of iterations.
+If you remember, we set the number of iteration to 100. Like I said before, this is necessary to reach convergence. Look at the table, you'd see that 49 iterations were required. If we had simply used the default 25 iterations in SPSS, we would not have reached convergence or obtained an optimal solution. Hence, in practice, it's always good to increase the maximum number of iterations.
 
 ![](images/factor_matrix_paf_1-01.PNG){fig-align="center"}
 
 From the table, the elements of the Factor Matrix table are called **loadings** and denotes the correlation of each item with the corresponding factor. Similar to PCA, if we square each loading and sum down the items (rows), we would get the total variance explained by each factor. N.B.: they are no longer called eigenvalues as in PCA but *Sums of Squared Loadings*.
 
-Let\'s calculate this for Factor 1:
+Let's calculate this for Factor 1:
 
 $$(0.575)^2 + (-0.280)^2 + (-0.602)^2 + (0.640)^2 + (0.561)^2 + (0.596)^2 + (0.662)^2 + (0.456)^2 + (-0.272)^2 + (0.405)^2$$
 
@@ -878,3 +878,172 @@ To summarize:
 7.  In common factor analysis, the sum of squared loadings is referred to as the eigenvalue.
 
 Hints- 1, 3,4 T, 2. F, it's the sum of the squared elements across factors, 5. F, sum all eigenvalues from the Extraction column of the Total Variance Explained table, 6. F, the total Sums of Squared Loadings represents only the total *common* variance excluding unique variance, 7. F, eigenvalues are only applicable for PCA.
+
+# Chapter 7- Bootstrapping
+
+When we collect data, our primary interest typically lies in understanding the characteristics of the population from which we sample the data. Ideally, we use estimates derived from this sample to draw inferences about the parameters of that population. For instance, suppose we take a random sample of data for job satisfaction for employees from 3 different companies and the sample mean = 201. This value represent an estimate of the mean current salary for the entire employee population. Furthermore, suppose this estimate comes with a standard error of \$2.32 for a sample size of 65, and so a 95% confidence interval for the population's mean current salary is around \$133.45 to \$204.51. An important question here is how reliable are these estimators? In statistical analysis, when dealing with well-understood and "known" populations with stable parameters, we have ideas about the characteristics of sample estimates and can have confidence in the results. However, for unknown populations (which is quite common!) and perhaps ill-behaved parameters, we would have less confidence in the analysis. Bootstrapping is a statistical technique aimed at unveiling additional insights into the properties of estimators when dealing with "unknown" populations and parameters that may exhibit irregular behavior. In bootstrapping we *resample* the data to make statistical inference. Using this approach, we assume/pretend that the sample itself is the larger population and that allows us to approximate the effect of sampling variability by *resampling* from the *sample*. This is because, in most cases, it is practically impossible to obtain repeated samples from the same random process responsible for generating our data in order to observe how our estimate changes with each new sample. However, we can instead repeatedly draw additional samples from our original sample (population) and reapply our estimation method to each of these hypothetical samples. The variation in estimates across these resampled data can then be used to approximate the true sampling distribution of our estimator. So, this technique of assuming that our initial sample represents a theoretical population and repeatedly drawing new samples of the same size, N, from our original sample with replacement is known as **bootstrapping**.
+
+Bootstrapping can be used to generate robust estimates of standard errors and confidence intervals for various statistics, including the mean, median, correlation, or regression coefficient. Additionally, it can be employed in constructing hypothesis tests. Bootstrapping proves most valuable as an alternative to parametric methods especially when the parametric assumptions are not met. It is also useful when parametric inference is either impractical or necessitates complex calculations to determine standard errors, such as when calculating confidence intervals for the median, quartiles, and other percentile statistics.
+
+### 
+Example 1
+
+A telecommunications company experiences a monthly customer churn rate of approximately 27%. To effectively target efforts aimed at reducing churn, the management seeks to understand whether this percentage differs among specific customer groups they have defined. By employing bootstrapping, we can assess whether a single churn rate accurately characterizes the churn behavior across the four major customer categories.
+
+To do this, we will use an example data that came with SPSS. The data is already in SPSS and named "telco.sav" or you can download it [here](https://drive.google.com/file/d/1tn7xiWOkFJh6hKD4p9coJkyy1yvuS3ty/view?usp=sharing).
+
+#### Bootstrap to obtain confidence intervals for proportions
+
+Download and load this data to your SPSS. The data contains lots of information but for now let's focus on the question- remember the question is to know whether percentage churn varies across customer groups.
+
+Looking at the data, you'd see a column named "custcat" (customer category). First thing we need to do is to split the data by this customer category (refer back to the question!)
+
+To do this in SPSS, from the Data Editor-
+
+1.  select *Data \> Split File*.
+2.  Then select "compare groups" and then
+3.  drag the "customer category" variable into the the "Groups Based on" box.
+4.  Finally, click OK to run this analysis.
+
+Now that we have splitted the data per customer category, we can run our boostrap analysis to obtain bootstrap confidence intervals for proportions. To do this in SPSS, click on:
+
+1.  Analyze \> Descriptive Statistics \> Frequencies.
+
+2.  Select *Churn within last month* (churn) and drag it to the variable box
+
+3.  Then click on Statistics.
+
+4.  Select the Mean under the Central Tendency group.
+
+5.  Click Continue.
+
+6.  Now click **Bootstrap** in the Frequencies dialog box.
+
+7.  Select Perform bootstrapping.
+
+8.  The result may change slightly, but to ensure consistency and replicability, select Set seed for Mersenne Twister and type 9999 as the seed.
+
+9.  Click Continue.
+
+10. Click OK in the Frequencies dialog box.
+
+You should get something similar to the below output
+
+![](images/Bootstrap_1.PNG)
+
+The statistics table displays the mean Churn within the last month for each Customer category level. Since Churn within the last month has values of 0 and 1, where 1 indicates a YES or customer who churned, the mean is = proportion of customers who churned. The Statistic column shows the values typically generated by the Frequencies analysis using the original dataset. The Bootstrap columns are results derived from the bootstrapping algorithms.
+
+-   Bias = difference between the average value of this statistic across the bootstrap samples and the value in the Statistic column. In this scenario, the mean Churn within the last month is computed for all 1000 bootstrap samples, and the average of these means is then calculated.
+
+-   Std. Error = standard error associated with the mean value of Churn within the last month across the 1000 bootstrap samples.
+
+-   Also, the lower bound of the 95% bootstrap confidence interval is estimated by interpolating between the 25th and 26th mean values of Churn within the last month when the 1000 bootstrap samples are sorted in ascending order. The upper bound is similarly determined by interpolating the 975th and 976th mean values.
+
+From this table, we can conclude that the churn rate varies among different customer types. Notably, if you look at the result, the confidence interval for Plus service customers does not overlap with any other intervals, suggesting that, on average, these customers are less likely to churn.
+
+**Frequency Table**
+
+![](images/Bootstrap_1_freq.PNG){fig-align="center"}
+
+The Frequency table displays confidence intervals for the percentages (expressed as proportion × 100%) for each category. These confidence intervals are available for all categorical variables
+
+### Example 2- Using Bootstrapping to Estimate Confidence Interval for Medians
+
+In this example, we will use the "Employee" dataset in SPSS. The data is already in SPSS, you can navigate to your sample data or you can easily download it [here](https://drive.google.com/file/d/1fWhpc4IFfu7VULx0n9MwWlIpl_dfkjOH/view?usp=sharing).
+
+While examining employee records, management seeks to understand the past work experience of their employees. If you check the distribution of work experience of this data, you'd see it is right skewed (to do this- click on Graphs\>Histogram). Thus, in this case, we would be less confident in using mean for estimating the "typical" previous work experience compared to the median. Unfortunately, without bootstrapping, obtaining confidence intervals for the median using SPSS becomes challenging. So now we need to do bootstrapping.
+
+To do this in SPSS, go to-
+
+1.  Analyze \> Descriptive Statistics \> Explore
+2.  Choose Previous Experience (months) \[prevexp\] as a dependent variable.
+3.  Under the "display", click "Statistics".
+4.  Click Bootstrap.
+5.  Select the Perform bootstrapping option.
+6.  Set the seed for Mersenne Twister and type 9999 as the seed.
+7.  Select Bias corrected accelerated (BCa)- this way, you can get a more accurate intervals (albeit more processing time).
+8.  Click Continue.
+9.  Click OK in the Explore dialog box.
+
+You should get a result that looks like below
+
+![](images/Bootstrap_median.PNG){fig-align="center"}
+
+The result table above contains various statistics and bootstrap confidence intervals for these statistics. The spread observed in these bootstrap estimates provides an approximate measure of how large the impact of random error is from the original sample on the estimate variation. The bootstrap confidence interval for the mean (ranges from 86.75 to 104.74) and overlap the parametric confidence interval (86.42 to 105.30). Since both confidence intervals overlap, it means there is no statistically significant difference between the two estimation methods. In terms of the work experience, we can conclude that the "typical" employee has around 7-9 years of prior experience. However, the distribution of Previous Experience (months) is skewed, making the mean less suitable indicator of the "typical" current salary in comparison to the median.
+
+Meanwhile, when we look at the bootstrap confidence interval for the median, it ranges from 49.50 to 61.00. This estimate is both narrower and of lower value than the mean's confidence interval and suggest that the "typical" employee has approximately 4-5 years of prior experience. By using bootstrapping, we were able to obtain a range of values that more accurately represents the typical previous experience.
+
+### Example 3- *Using Bootstrapping to Choose Better Predictors*
+
+For this task, we will use the same "Employee data" as Example 2. Here, we are interested in determining the factors related to salary increases among employees. To address this question, we will fit a linear model to the differences between current and initial salaries. When employing bootstrapping for a linear model, you can employ specialized resampling techniques, such as the residual and wild bootstrap, to enhance the accuracy of your results.
+
+To do this in SPSS, we need to first compute the difference between Beginning and Current salary.
+
+1.  Cllick on Transform and then Compute Variable.
+2.  Under the "Target variable", type "diff_salary"
+3.  Now, type *salary-salbegin* as the numeric expression.
+4.  Click OK.
+
+Once you're done calculating the difference, you should see it as a new column in your SPSS data editor. Now, we can proceed with our analysis.
+
+1.  Click on Analyze\>General Linear Model\>Univariate
+
+2.  Move the dif_salary to the dependent variable.
+
+3.  Move Gender \[gender\], Employment Category \[jobcat\], and Minority Classification \[minority\]
+
+    to the fixed factors box.
+
+4.  Select Months since Hire \[jobtime\] and Previous Experience (months) \[prevexp\] as covariates.
+
+5.  Now, click Model.
+
+6.  Click Build terms and select Main effects from the Build Terms dropdown.
+
+7.  Select gender through prevexp as model terms.
+
+8.  Click Continue.
+
+9.  Click Save in the GLM Univariate dialog box.
+
+10. Select Unstandardized in the Residuals group.
+
+11. Click Continue.
+
+12. Click Bootstrap in the GLM Univariate dialog box.
+
+    The settings for bootstrapping remain consistent throughout dialogs that offer bootstrapping options. During the active bootstrapping process, you are unable to save new variables to the dataset, so it is crucial to ensure that bootstrapping is turned off.
+
+13. If necessary, uncheck the "Perform bootstrapping" option.
+
+14. Click the "OK" button in the GLM Univariate dialog box. As a result, the dataset will now include a new variable "RES_1," which = unstandardized residuals derived from this model.
+
+15. Again, go to the GLM Univariate dialog (Analyze\>GLM\>Univariate) and select the "Save" option.
+
+16. Uncheck the Unstandardized residuals, then click Continue and click Options in the GLM Univariate dialog box.
+
+17. Under the Display group, select Parameter estimates.
+
+18. Click Continue.
+
+19. Click Bootstrap in the GLM Univariate dialog box.
+
+20. Click Perform bootstrapping.
+
+21. Set seed for Mersenne Twister and type 9999 as the seed.
+
+22. Click Continue, then finally click on OK to run the analysis
+
+Once you click on OK, your result should look like below
+
+![](images/param_est.PNG){fig-align="center"}
+
+The Parameter Estimates table presents the conventional, non-bootstrapped parameter estimates for the model's terms. Since the significance level of 0.105 associated with the term \[minority=0\] \> 0.05 (our chosen alpha), we have evidence NOT to reject the null hypothesis. We can then conclude that there is no significant impact of Minority Classification on salary increases.
+
+*Now, when we look at the table showing Bootstrap for Parameter Estimates.*
+
+![](images/Bootstrap_param_est.PNG){fig-align="center"}
+
+In the "Std. Error" column, you'll notice that, in some cases, the parametric standard errors, such as those for the intercept, appear to be small when compared to the bootstrap estimates, leading to wider confidence intervals. On the other hand, for certain coefficients, like \[minority=0\], the parametric standard errors were too large. However, the bootstrap results reveal a significance value of 0.037 which is \< 0.05. With this significant result, we can therefore conclude that the observed difference in salary increases between employees who are minorities and those who are not is not merely as a result of chance. As such, the company now have evidence to recognize that the difference worth further investigations and try to uncover potential underlying causes.
+
+#End.
