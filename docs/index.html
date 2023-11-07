@@ -140,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   <li><a href="#example-2--using-bootstrapping-to-estimate-confidence-interval-for-medians" id="toc-example-2--using-bootstrapping-to-estimate-confidence-interval-for-medians" class="nav-link" data-scroll-target="#example-2--using-bootstrapping-to-estimate-confidence-interval-for-medians">Example 2- Using Bootstrapping to Estimate Confidence Interval for Medians</a></li>
-  <li><a href="#example-3--using-bootstrapping-to-choose-better-predictors" id="toc-example-3--using-bootstrapping-to-choose-better-predictors" class="nav-link" data-scroll-target="#example-3--using-bootstrapping-to-choose-better-predictors">Example 3- <em>Using Bootstrapping to Choose Better Predictors</em></a></li>
+  <li><a href="#example-3--bootstrapping-to-choose-better-informative-predictors" id="toc-example-3--bootstrapping-to-choose-better-informative-predictors" class="nav-link" data-scroll-target="#example-3--bootstrapping-to-choose-better-informative-predictors">Example 3- <em>Bootstrapping to Choose Better (informative) Predictors</em></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -964,8 +964,8 @@ c(Sxy, Sxx, Syy)</code></pre>
 <p>The result table above contains various statistics and bootstrap confidence intervals for these statistics. The spread observed in these bootstrap estimates provides an approximate measure of how large the impact of random error is from the original sample on the estimate variation. The bootstrap confidence interval for the mean (ranges from 86.75 to 104.74) and overlap the parametric confidence interval (86.42 to 105.30). Since both confidence intervals overlap, it means there is no statistically significant difference between the two estimation methods. In terms of the work experience, we can conclude that the “typical” employee has around 7-9 years of prior experience. However, the distribution of Previous Experience (months) is skewed, making the mean less suitable indicator of the “typical” current salary in comparison to the median.</p>
 <p>Meanwhile, when we look at the bootstrap confidence interval for the median, it ranges from 49.50 to 61.00. This estimate is both narrower and of lower value than the mean’s confidence interval and suggest that the “typical” employee has approximately 4-5 years of prior experience. By using bootstrapping, we were able to obtain a range of values that more accurately represents the typical previous experience.</p>
 </section>
-<section id="example-3--using-bootstrapping-to-choose-better-predictors" class="level3">
-<h3 class="anchored" data-anchor-id="example-3--using-bootstrapping-to-choose-better-predictors">Example 3- <em>Using Bootstrapping to Choose Better Predictors</em></h3>
+<section id="example-3--bootstrapping-to-choose-better-informative-predictors" class="level3">
+<h3 class="anchored" data-anchor-id="example-3--bootstrapping-to-choose-better-informative-predictors">Example 3- <em>Bootstrapping to Choose Better (informative) Predictors</em></h3>
 <p>For this task, we will use the same “Employee data” as Example 2. Here, we are interested in determining the factors related to salary increases among employees. To address this question, we will fit a linear model to the differences between current and initial salaries. When employing bootstrapping for a linear model, you can employ specialized resampling techniques, such as the residual and wild bootstrap, to enhance the accuracy of your results.</p>
 <p>To do this in SPSS, we need to first compute the difference between Beginning and Current salary.</p>
 <ol type="1">
