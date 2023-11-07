@@ -973,7 +973,7 @@ The result table above contains various statistics and bootstrap confidence inte
 
 Meanwhile, when we look at the bootstrap confidence interval for the median, it ranges from 49.50 to 61.00. This estimate is both narrower and of lower value than the mean's confidence interval and suggest that the "typical" employee has approximately 4-5 years of prior experience. By using bootstrapping, we were able to obtain a range of values that more accurately represents the typical previous experience.
 
-### Example 3- *Using Bootstrapping to Choose Better Predictors*
+### Example 3- *Bootstrapping to Choose Better (informative) Predictors*
 
 For this task, we will use the same "Employee data" as Example 2. Here, we are interested in determining the factors related to salary increases among employees. To address this question, we will fit a linear model to the differences between current and initial salaries. When employing bootstrapping for a linear model, you can employ specialized resampling techniques, such as the residual and wild bootstrap, to enhance the accuracy of your results.
 
