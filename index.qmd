@@ -1051,7 +1051,7 @@ In the "Std. Error" column, you'll notice that, in some cases, the parametric st
 
 # Chapter 8- Revisiting Repeated Measure ANOVA
 
-In lab 2 of this class, we discussed repeated measure ANOVA. Please see this [link](https://drhammed.github.io/EDUC806_CU/#repeated-measures-anova) before you proceed if you need a quick tutorial about one-factor repeated measures ANOVA.
+In lab 2 of this class, we discussed repeated measure ANOVA. Please see this [link](https://drhammed.github.io/EDUC806_CU/#repeated-measures-anova) before you proceed if you need a quick tutorial about one-factor repeated measure ANOVA.
 
 A two-way repeated measures ANOVA is used to assess the mean differences among groups categorized based on two independent variables (within-subjects factors). This type of ANOVA is commonly applied in scenarios where a dependent variable is measured across two or more time points or when subjects experience two or more conditions, with "time" and "conditions" serving as the two factors. The primary goal of a two-way repeated measures ANOVA is to examine whether there is an interaction effect between these two factors on the response (dependent) variable.
 
