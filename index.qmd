@@ -1067,11 +1067,11 @@ Now suppose we have confirmed the presence of a statistically significant intera
 
 However, If you're uncertain about the suitability of a two-way repeated measures ANOVA for your study, it's worthwhile to compare it with a one-way repeated measures ANOVA and even a mixed ANOVA. The two-way repeated measures ANOVA extends beyond the one-way version, which as the name implies, involves only a single factor (i.e., one independent variable). It's also essential to differentiate between the two-way repeated measures ANOVA and the mixed ANOVA. The mixed ANOVA closely resembles the two-way repeated measures ANOVA since both involve two factors (often "time" and a form of "condition") and aim to understand whether an interaction exists between these factors and the dependent variable. However, a key distinction lies in the fact that, in a mixed ANOVA, subjects experiencing each condition (e.g., control and treatment) are different, whereas in a two-way repeated measures ANOVA, subjects undergo both conditions (e.g., both control and treatment).
 
-Finally, if you find that the two-way repeated measures ANOVA may not be the most suitable test for your needs, considering a one-way repeated measures ANOVA (if you have one factor) or mixed ANOVA may be advisable. You can also refer back to this [table](https://drhammed.github.io/EDUC806_CU/#which-test-should-i-use-for-my-data) to select the appropiate test for your data.
+Finally, if you find that the two-way repeated measures ANOVA may not be the most suitable test for your needs, considering a one-way repeated measures ANOVA (if you have one factor) or mixed ANOVA may be advisable. You can also refer back to this [table](https://drhammed.github.io/EDUC806_CU/#which-test-should-i-use-for-my-data) to select the appropriate test for your data.
 
 ### Assumptions
 
-Like we discussed under the [one-way ANOVA](https://drhammed.github.io/EDUC806_CU/#one-way-anova), you need to make sure your assumprions are met (this is a parametric test). Such assumptions include
+Like we discussed under the [one-way ANOVA](https://drhammed.github.io/EDUC806_CU/#one-way-anova), you need to make sure your assumptions are met (this is a parametric test). Such assumptions include
 
 -   Your independent variables ( i.e.within-subjects factors) should consist of at least two categorical, "related groups" or "matched pairs".
 
