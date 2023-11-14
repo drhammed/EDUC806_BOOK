@@ -886,6 +886,7 @@ When we collect data, our primary interest typically lies in understanding the c
 Bootstrapping can be used to generate robust estimates of standard errors and confidence intervals for various statistics, including the mean, median, correlation, or regression coefficient. Additionally, it can be employed in constructing hypothesis tests. Bootstrapping proves most valuable as an alternative to parametric methods especially when the parametric assumptions are not met. It is also useful when parametric inference is either impractical or necessitates complex calculations to determine standard errors, such as when calculating confidence intervals for the median, quartiles, and other percentile statistics.
 
 ### 
+
 Example 1
 
 A telecommunications company experiences a monthly customer churn rate of approximately 27%. To effectively target efforts aimed at reducing churn, the management seeks to understand whether this percentage differs among specific customer groups they have defined. By employing bootstrapping, we can assess whether a single churn rate accurately characterizes the churn behavior across the four major customer categories.
@@ -1047,3 +1048,81 @@ The Parameter Estimates table presents the conventional, non-bootstrapped parame
 In the "Std. Error" column, you'll notice that, in some cases, the parametric standard errors, such as those for the intercept, appear to be small when compared to the bootstrap estimates, leading to wider confidence intervals. On the other hand, for certain coefficients, like \[minority=0\], the parametric standard errors were too large. However, the bootstrap results reveal a significance value of 0.037 which is \< 0.05. With this significant result, we can therefore conclude that the observed difference in salary increases between employees who are minorities and those who are not is not merely as a result of chance. As such, the company now have evidence to recognize that the difference worth further investigations and try to uncover potential underlying causes.
 
 #End.
+
+# Chapter 8- Revisiting Repeated Measure ANOVA
+
+In lab 2 of this class, we discussed repeated measure ANOVA. Please see this [link](https://drhammed.github.io/EDUC806_CU/#repeated-measures-anova) before you proceed if you need a quick tutorial about one-factor repeated measures ANOVA.
+
+A two-way repeated measures ANOVA is used to assess the mean differences among groups categorized based on two independent variables (within-subjects factors). This type of ANOVA is commonly applied in scenarios where a dependent variable is measured across two or more time points or when subjects experience two or more conditions, with "time" and "conditions" serving as the two factors. The primary goal of a two-way repeated measures ANOVA is to examine whether there is an interaction effect between these two factors on the response (dependent) variable.
+
+For example, suppose an online retailer aim to enhance the productivity of packers in their order fulfillment center. In essence, the retailer wants to investigate whether having background music will impact productivity. To do this, they recruited 200 packers to participate in an experiment with a "control" group having no music and a "treatment" group with music. The retailer is also interested in understanding if any productivity increase is influenced by the timing of music playback, exploring whether it is a sustained improvement or just an initial novelty effect.
+
+The dependent variable in this study is "productivity" measured by the average number of packages fulfilled. The two factors are "conditions" (with two groups: "control" or "treatment") and "time" (productivity at three time points: "at the beginning of the experiment," "1 week later," and "4 weeks later").
+
+All 200 employees experience both the treatment and control conditions, but the order varies. The employees are randomly divided into two groups: (a) 100 packers start with the control and then undergo the treatment, while (b) the other 100 start with the treatment and then undergo the control (they did this for ***counterbalancing***, to mitigate bias that may arise from the order of the condition).
+
+Upon completion of the experiment, the retailer employs a two-way repeated measures ANOVA to assess whether changes in productivity result from the interaction between the use of music (representing "conditions," one of the factors) and "time" (the second factor). Although regardless of the presence of interaction, follow-up tests can be conducted to delve deeper into how the within-subjects factors specifically influenced back pain.
+
+Now suppose we have confirmed the presence of a statistically significant interaction, there are various approaches to further investigate the results (some of which we have discussed in the past. Please see the Post-Hoc part of this [tutorial](https://drhammed.github.io/EDUC806_CU/#one-way-anova)). It's crucial to recognize that the two-way repeated measures ANOVA serves as an [omnibus](https://www.statisticshowto.com/omnibus-test/) test statistic and doesn't provide information on specific groups within each factor that differ significantly from each other. For instance, if one factor (e.g., "time") comprises three groups (e.g., "time 1," "time 2," and "time 3"), the two-way repeated measures ANOVA outcome won't indicate whether the values on the dependent variable differ between specific pairs of groups (e.g., "Time 1" vs. "Time 2"). It will only show that at least two of the groups exhibit differences. Given the potential for multiple groups and factors in your study design, determining which specific groups differ is essential. This can be accomplished through [post-hoc](https://drhammed.github.io/EDUC806_CU/#one-way-anova) tests.
+
+However, If you're uncertain about the suitability of a two-way repeated measures ANOVA for your study, it's worthwhile to compare it with a one-way repeated measures ANOVA and even a mixed ANOVA. The two-way repeated measures ANOVA extends beyond the one-way version, which as the name implies, involves only a single factor (i.e., one independent variable). It's also essential to differentiate between the two-way repeated measures ANOVA and the mixed ANOVA. The mixed ANOVA closely resembles the two-way repeated measures ANOVA since both involve two factors (often "time" and a form of "condition") and aim to understand whether an interaction exists between these factors and the dependent variable. However, a key distinction lies in the fact that, in a mixed ANOVA, subjects experiencing each condition (e.g., control and treatment) are different, whereas in a two-way repeated measures ANOVA, subjects undergo both conditions (e.g., both control and treatment).
+
+Finally, if you find that the two-way repeated measures ANOVA may not be the most suitable test for your needs, considering a one-way repeated measures ANOVA (if you have one factor) or mixed ANOVA may be advisable. You can also refer back to this [table](https://drhammed.github.io/EDUC806_CU/#which-test-should-i-use-for-my-data) to select the appropiate test for your data.
+
+### Assumptions
+
+Like we discussed under the [one-way ANOVA](https://drhammed.github.io/EDUC806_CU/#one-way-anova), you need to make sure your assumprions are met (this is a parametric test). Such assumptions include
+
+-   Your independent variables ( i.e.within-subjects factors) should consist of at least two categorical, "related groups" or "matched pairs".
+
+-   **Normal distribution**- The distribution of the response (dependent) variable within each combination of related groups should show an approximate normal distribution.
+
+-   **Dependent variable** should ideally be **continuous** (i.e., **interval** or **ratio** variables)
+
+-   No significant outliers
+
+-   **Sphericity**- equality of variance in the differences between all combinations of related groups.
+
+### Practice in SPSS
+
+Context-
+
+For this lab, we shall use a fictional dataset "lab_9-Data." You can download it here. This dataset was generated randomly in Excel and consists of 22 observations. In this study, we give our participants an assessment to analyze how well they can relax (higher score indicates a higher level of relaxation). Here, we propose that light and sound level will influence the relaxation score. Each participant in this experiment is exposed to music (quiet vs loud) while simultaneously exposing them to light (light or dark). In short, each participants were exposed to all combination of the 4 conditions (every combination of the 2 factors- **light** and **music**). Both factors contains 2 levels- **Light** (light vs dark) and **Music** (quiet vs loud). Following this, relaxation scores were measured and participants were examined multiple times (repeated). So, let us perform a Two-way Repeated Measures ANOVA in SPSS to assess if any of these interactions are significant. Specifically, analyze interactions between light and music, or the combined impact of music, and light on relaxation levels.
+
+IN SPSS,
+
+1.  Click [**A**]{.underline}**nalyze \> [G]{.underline}eneral Linear Model \> [R]{.underline}epeated Measures**
+2.  The next pop-up should ask you to define the "Within-subject" factor. Change the name to "Light" and type 2 under the "number of levels (light vs dark)
+3.  Repeat step 2 and change the name to Music and number of level = 2 (loud vs quiet).
+4.  Click on Define
+5.  Now, match the data to the "Within-Subject variables". Drag the "loud_light' to the "1,1", Quiet_light to 1,2, loud_dark = 2,1, and quiet_dark = 2,2.
+6.  Click on "Plots" and move the "light" to the "horizontal" and Music to the "separate lines".
+7.  Click on "Add" and then "continue".
+8.  Click on "options" and check "Descriptive statistics" and "Estimate of effect size"
+9.  Finally, click on "OK" to run the analysis.
+
+### Results
+
+The results produced by SPSS Statistics are comprehensive, offering quite a lot of information regarding your analysis. Here, I provide a brief overview of the key steps you should take to interpret the results of your two-way repeated measures ANOVA and, if necessary, when to conduct further analysis within SPSS Statistics.
+
+![](images/descript stat.PNG){fig-align="center"}
+
+Looking at the table, we can see all the combinations appear to have similar means and the only one that stands out is the room that is both loud and with light (71.27).
+
+Looking at the "test of Sphericity" (which explain if the variances of the differences between all combinations of related groups are equal), you can see there's no result (sig. column is empty). That is because we have just two levels within each subject factor (no variation). So, we should not expect result for the test of sphericity in this case. However, if you have different levels in your data, then you'd get result there and can interpret the significance column with respect to the variance (again, this assumption test for equality of variance).
+
+![](images/sphericity.PNG){fig-align="center"}
+
+Now, Let's interpret the "Test of within-Subjects Effects".
+
+![](images/within-subject-effects.PNG){fig-align="center"}
+
+If you look at the main effect of "light", we can see there's no significant effect (sig. value = 0.443). Also, if you look at the main effect of "music", there's no significant effect of music (sig. = 0.240). Looking at the interaction effect (light\*music), we also have evidence to conclude that there's no significant effect since the sig. value is \> 0.05 (0.273).
+
+In essence, if there is no **statistically significant interaction**, you should interpret and report the main effects found within the **Tests of Within-Subjects Effects** output tables. In this case, rather than calculating simple main effects, which is done when the interaction is statistically significant, the focus shifts to interpreting the main effects for your factors (i.e., the independent variables). Additionally, if there's a significant interaction, we would have to run a pairwise comparison test or a paired sample t-test. Also, if either of these main effects is statistically significant, you will need to interpret the relevant SPSS Statistics output from your **post hoc tests** in the Pairwise Comparisons table, as discussed in [Week 2](https://drhammed.github.io/EDUC806_CU/#repeated-measures-anova). This will help you to understand where the differences (between groups) within your factors lie.
+
+Moving to the profile plot
+
+![](images/plot_1-01.PNG){fig-align="center"}
+
+The blue denotes the loud music and the purple = quiet condition. So, looking at the Loud music from the plot, we can observe that as we move from "light" to "dark", the score increased dramatically, and we can say the relaxation levels were much higher when the music is loud (i.e., people enjoy loud music and in a somewhat cool environment). However, looking at the quiet music condition, we can see that as we move from the light to dark area, the score increased slightly but not in the same rate as loud music.
