@@ -148,6 +148,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#practice-in-spss" id="toc-practice-in-spss" class="nav-link" data-scroll-target="#practice-in-spss">Practice in SPSS</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   </ul></li>
+  <li><a href="#chapter-9---analyzing-questionnaire-survey-data" id="toc-chapter-9---analyzing-questionnaire-survey-data" class="nav-link" data-scroll-target="#chapter-9---analyzing-questionnaire-survey-data">Chapter 9 - Analyzing Questionnaire &amp; Survey Data</a>
+  <ul class="collapse">
+  <li><a href="#data-formatting" id="toc-data-formatting" class="nav-link" data-scroll-target="#data-formatting">Data Formatting</a></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a></li>
+  <li><a href="#basic-stacked-bar-chart" id="toc-basic-stacked-bar-chart" class="nav-link" data-scroll-target="#basic-stacked-bar-chart">Basic stacked bar chart</a></li>
+  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis">Data Analysis</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1094,12 +1101,208 @@ c(Sxy, Sxx, Syy)</code></pre>
 </figure>
 </div>
 <p>The blue denotes the loud music and the purple = quiet condition. So, looking at the Loud music from the plot, we can observe that as we move from “light” to “dark”, the score increased dramatically, and we can say the relaxation levels were much higher when the music is loud (i.e., people enjoy loud music and in a somewhat cool environment). However, looking at the quiet music condition, we can see that as we move from the light to dark area, the score increased slightly but not in the same rate as loud music.</p>
+</section>
+</section>
+<section id="chapter-9---analyzing-questionnaire-survey-data" class="level1">
+<h1>Chapter 9 - Analyzing Questionnaire &amp; Survey Data</h1>
+<p>In this tutorial, we will explore qualitative data, specifically the type of data acquired from survey or interviews. The data analysis methods covered in this chapter are particularly well-suited for educational or social science research. Although the illustrations provided stem from a study investigating human behavior in relation to environmentally friendly actions, these techniques are versatile and can be applied to observations within various fields. For instance, you could employ a Likert scale (e.g., 1-5, Strongly Disagree to Strongly Agree) to gauge the effectiveness of a teaching method in an educational setting. The question might be formulated as follows: “To what extent do you agree with the statement: ‘This teaching method enhances student engagement?’ 1 = Strongly Disagree, 5 = Strongly Agree.”</p>
+<p>To begin with, let’s load in the data obtained, do some data visualization and finally conduct basic statistical analyses to address specific questions.</p>
+<p>The data for this tutorial can be downloaded <a href="https://drive.google.com/file/d/1EfNP005XSI8YWfJaGfTK6KlyCIx12mIz/view?usp=sharing">here</a>. These data have been anonymized and are derived from an online survey designed to explore the potential impact of gender and various cohabitation arrangements on individuals’ likelihood to engage in environmentally friendly actions within their households, such as recycling or purchasing sustainable household products.</p>
+<p>I used this dataset because it is formatted in a way that resembles what you might generate from your own survey responses (e.g., using platforms like Google Forms). However, it is not fully prepared for analysis and our first task is to format the data for analysis, allowing you to acquire the skills necessary for formatting your own data for analysis.</p>
+<p>If you look at this week’s data <a href="https://drive.google.com/drive/folders/170dTx5Uqfhv0ENI6F_ipBxvC1ET6gxXo?usp=sharing">folder</a>, you’d see two files there. The “Lookup-Sustainability” data is a table that links each column’s name in the dataframe to the corresponding question asked in the survey. Although we’re not writing codes here, but substituting the raw questions with concise column names makes it easier when writing codes (so you don’t have to write long names). Additionally, with the lookup table, we can easily know the actual question titles and add them back when generating plots for example.</p>
+<section id="data-formatting" class="level3">
+<h3 class="anchored" data-anchor-id="data-formatting">Data Formatting</h3>
+<p>Getting qualitative data into a suitable format for analysis is a key pre-requisite for success - you're setting yourself up for the coding fun to follow! Most analytical tools are best suited to numerical datasets, so some coercion is needed to generate numerical values from our qualitative observations. When you are designing a survey, emember to consider how you will analyse the data, draw out how you imagine your graphs will look, etc., this will make it much easier later on.</p>
+<p>Some of the questions in this data set were designed on a five point scale, also known as a Likert scale. Each column in the dataframe contains responses to a single question. You can Look at the values contained in the column titled <code>sustainability_daily_think</code> entering this code:</p>
+<p>Preparing survey or other qualitative data for analysis is a crucial step for data analysis! Since most analytical tools are optimized for numerical datasets, a certain level of manipulation is necessary to transform survey responses into numerical values. When creating a survey, it’s essential to think about the data analysis process. Consider how you intend to analyze the data and visualize the results, envisioning the structure of your graphs, and so on—this foresight significantly simplifies your subsequent analysis.</p>
+<p>In this dataset, some questions are structured on a Likert scale (five-point scale). Each column in the dataframe captures responses to a specific question. For example, you can check the values within the column labeled “sustainability_daily_think” to know how its structured.</p>
+<p>You’ll notice that this column contains five distinct categories that can be arranged in a logical order from low to high: <em>Never, Rarely, Sometimes, Often, All the time</em>. While we could treat these responses as factors, doing so neglects their ordinal nature. Any plots generated would simply arrange the factors alphabetically. Instead, we will treat them as an “ordered factor”:</p>
+<p>To do that in SPSS:</p>
+<ol type="1">
+<li>Open the “Variable View”: Click on the “Variable View” tab at the bottom of the screen.</li>
+<li>Locate the variable: Find the variable you want to specify the order (sustainability_daily_think).</li>
+<li>Define value labels: In the “Values” column for that variable, double-click to open the “Value Labels” dialog box.</li>
+<li>Assign numerical values:</li>
+</ol>
+<ul>
+<li><p>Never = 1</p></li>
+<li><p>Rarely = 2</p></li>
+<li><p>Sometimes = 3</p></li>
+<li><p>Often = 4</p></li>
+<li><p>All the time = 5</p></li>
+</ul>
+<ol start="5" type="1">
+<li>Click “OK” to close the dialog box.</li>
+<li>Switch to “Data View”</li>
+<li>Verify the changes.</li>
+</ol>
+<p>Now, if you check the variable you modified, you should see the numerical values assigned to each category and when you perform analyses or create graphs, SPSS will recognize the ordered nature of the variable. The categories will be treated in the specified order rather than alphabetically.</p>
+<p>In the data, other columns, such as <em>energy_action</em>, comprise strings of letters (e.g., BDEFH). In this survey, respondents were presented with a list of sustainable actions related to the home (e.g., “I have replaced my lightbulbs with energy-saving lightbulbs”) and were asked to mark all applicable actions with corresponding letters. Each letter represents a distinct action. The format of this column mirrors what you might encounter use (for example) a Google Form and downloaded the the raw results.</p>
+<p>Now, suppose we aim to investigate whether the number of sustainable energy-related actions varies based on gender. To achieve this, we need to create a new column in the data frame that tallies the number of letters in <em>energy_action</em> column. To accomplish this task in SPSS,</p>
+<p>1. Choose “Compute Variable”:</p>
+<p>2. Define the new variable: In the “Target Variable” field, enter the name for the new variable (“energy_action_n”) and in the “Numeric Expression” field, enter the expression: <em>LENGTH(energy_action)</em>.</p>
+<p>The <em>LENGTH</em> function counts the number of characters in a string.</p>
+<p>3. Click “OK” to close the dialog box- now, you have created a new column, “energy_action_n,” that contains the count of letters in the “energy_action” variable. You can see this new column in your SPSS data view (check the last column).</p>
+</section>
+<section id="data-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="data-visualization">Data Visualization</h3>
+<p>Now that our data is appropriately formatted for analysis, we can visualize it to see some interesting patterns. Let’s begin with the Likert scales. Bar charts can effectively represent the distribution of responses within each ordinal category for a given question. The suitable format for the bar chart depends on the nature of the question and the wording of the responses. For instance, if the potential responses are structured as “Strongly disagree,” “Disagree,” “Neither agree nor disagree,” “Agree,” “Strongly agree,” one might assume that the neutral or zero position lies in the middle, with “Disagree” representing the negative end and “Agree” the positive end. Conversely, if the responses are framed as “Never,” “Rarely,” “Sometimes,” “Often,” “All the time,” the neutral or zero point would be “Never,” with all other responses falling on the positive side. In the former scenario, a “diverging stacked bar chart” would be suitable, while in the latter, a standard “stacked bar chart” would suffice.</p>
+<section id="plot" class="level4">
+<h4 class="anchored" data-anchor-id="plot">Plot</h4>
+<p>Let's first make a diverging stacked bar chart of responses to the question: "How often during a normal day do you think about the sustainability of your actions?". Investigating how gender affects the response. You can see from the lookup table (<code>sust_lookup</code>) that the responses to this question are stored in the column called <strong>sustainability_daily_think</strong>.</p>
+<p>Check for yourself by entering the code below to display the contents of the <code>sust_lookup</code> object:</p>
+<p>To begin, we’ll generate a diverging stacked bar chart depicting responses to the inquiry: “How frequently, during a typical day, do you contemplate the sustainability of your actions?” This visualization aims to explore the influence of gender on these responses. If you check the lookup filem you can confirm if the responses to this question are stored, specifically in the column labeled “sustainability_daily_think.”</p>
+<p>First, we can create a summarized data containing the responses from this column. This is a bit tricky in SPSS as it involve a lot of data manipulation and wrangling. SPSS is not suitable for that and I used another software (R programming) to achieve that task. So, you can just download the data <a href="https://drive.google.com/file/d/15fR1KmsVcr1Zl24sv8t3Rpog9Ln16eHj/view?usp=sharing">here</a> and proceed with the analysis. However, if you’re curious or a bit familiar with R and you’d like to try it on your own, I include the full script of this tutorial in R (including how to export R to SPSS). You can download it <a href="https://drive.google.com/file/d/1rEGgmRKRnCyxMUj-h-R4NfhHknRxd37J/view?usp=sharing">here</a>.</p>
+<p>To plot the stacked bar chat in SPSS:</p>
+<ul>
+<li><p>Go to Graph&gt;Bar&gt;Stack Bar</p></li>
+<li><p>Click on Define</p></li>
+<li><p>Select the “gender” to “Category Axis” and “response” to Define Stacks by.</p></li>
+<li><p>Click on “% of cases” in the “bars represent” box and</p></li>
+<li><p>Click OK.</p></li>
+</ul>
+<p>Now with your plot, you can edit . For example, you can transpose the chart (open the chart editor, then “options” and click on “transpose chart”). You can also “scale the percentage to 100”.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/divergent_plot.PNG" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>This is the equivalent plot in R. You’ll agree with me that R is fantastic hen it come to data visualization!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Divergent_R.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Certainly, there are alternative ways to present this type of data. You might opt for a pie chart or a straightforward table that outlines the count of responses by group. However, the diverging bar chart is suitable for comparing groups of respondents, and it can even be extended to compare responses to distinct questions if you choose to group by question instead of gender.</p>
+</section>
+</section>
+<section id="basic-stacked-bar-chart" class="level3">
+<h3 class="anchored" data-anchor-id="basic-stacked-bar-chart">Basic stacked bar chart</h3>
+<p>As another example, let’s create a standard stacked bar chart and focus on the question regarding the extent of engagement in energy-related sustainable actions: “How many of these energy-related sustainable actions do you perform?” The corresponding responses are located in the <em>energy_action</em> column. <strong>Here, our objective is to categorize these responses by age cohort.</strong></p>
+<p>First, we need to count the number of sustainable actions undertaken but we have already done that (<em>energy_action_n</em>). If you missed that, you can create the column following these steps:</p>
+<p>1. Choose “Compute Variable”:</p>
+<p>2. Define the new variable: In the “Target Variable” field, enter the name for the new variable (“energy_action_n”) and in the “Numeric Expression” field, enter the expression: <em>LENGTH(energy_action)</em>.</p>
+<p>The <em>LENGTH</em> function counts the number of characters in a string.</p>
+<p>3. Click “OK” to close the dialog box- now, you have created a new column, “energy_action_n,” that contains the count of letters in the “energy_action” variable. You can see this new column in your SPSS data view (check the last column).</p>
+<p>Now, create the plot in SPSS.</p>
+<ul>
+<li><p>To do this, go to “Graphs&gt;Bar&gt;Stacked” and then “Define”.</p></li>
+<li><p>Drag the “energy_action_n’ to”Category Axis” and “Age” to “Define Stacks by”.</p></li>
+<li><p>Select “N of cases” at the “Bars Represent” box and</p></li>
+<li><p>Click OK.</p></li>
+</ul>
+<p>You should get something similar to this</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/basic_stacked.PNG" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>See below for a more visually cool plot (made in R)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Basic_Stacked_R.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Bubble Plot</p>
+<p>Suppose we aim to examine correlations between two sets of data, a suitable visualization is a scatter or bubble plot. For instance, we might investigate if there’s a clear pattern between the age of respondents and the frequency with which they contemplate sustainable activities. Looking at the dataset, you’d notice this survey provides age ranges rather than precise age values (e.g., 18-20, 21-29, etc.).</p>
+<p>To begin, you need to generate a summary table by aggregating the number of responses within the two categories: age and the frequency of thinking about sustainable activities. For simplicity, you can download the data <a href="https://drive.google.com/file/d/1SXftsmzFId51SYbTHpPa6moIAgnJFUGw/view?usp=sharing">here</a>.</p>
+<p>Now, you can plot the data in SPSS:</p>
+<ul>
+<li><p>Click on “Graphs&gt;Chart Builder&gt;Scatter/Dot(Gallery)”</p></li>
+<li><p>Drag the “Scatter Plot” to the Chart preview panel</p></li>
+<li><p>Drag the “age” to X-axis and “sustainability_daily_think” to the Y-axis.</p></li>
+<li><p>Drag “n” to the “Set size” box and</p></li>
+<li><p>Click on OK</p></li>
+</ul>
+<p>You should get the bubble plot like below</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Bubble_plot-01.PNG" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Or</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Bubble_Plot_R.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="data-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="data-analysis">Data Analysis</h3>
+<p>Because survey data are usually structured with numerous counts and factors, such data frequently violates the assumptions of conventional parametric statistical analysis. As a result, we will explore beyond our linear models! Here are a few ways to test different hypotheses using our survey data.</p>
+<section id="chi-square" class="level4">
+<h4 class="anchored" data-anchor-id="chi-square">Chi-Square</h4>
+<p>The Chi-Square Test of Independence is employed to determine whether there is a relationship between <strong>categorical variables</strong>, indicating whether these variables are independent or not. Unlike ANOVA, Chi-square is a <strong>nonparametric test</strong>. It involves the use of a contingency table for data analysis. A contingency table, also known as a cross-tabulation, crosstab, or two-way table, organizes data based on <strong>two categorical variables</strong>. The categories for one variable are displayed in the rows, while the categories for the other variable are presented in columns. Each variable must possess two or more categories, and each cell in the table represents the total count of cases for a specific pair of categories.</p>
+<p>Chi-Square Test is often used to test for the statistical independence or association between two <strong>categorical variables</strong>. I mean, it is designed for comparing categorical variables and not continuous variables or between categorical and continuous variables. Furthermore, it solely evaluates associations between categorical variables and as such can not make inference about <strong>causation</strong>. See this <a href="https://en.wikipedia.org/wiki/Chi-squared_test">link</a> to read more.</p>
+<p>To do this in SPSS, go to:</p>
+<ul>
+<li><p>Analyze&gt;Descriptive Statistics&gt;Crosstabs.</p></li>
+<li><p>Drag the “gender” to Row and Sustainability_daily_think to “Column”</p></li>
+<li><p>Click on Statistics and select “Chi-square”</p></li>
+<li><p>Click on “Cells” and select “observed” and “expected”</p></li>
+<li><p>Click OK to run the analysis.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Chi-square.PNG" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>The table above can be used to interpret the outcome of the chi-squared test, where a lower p-value suggests a higher probability of dependency between the two variables. In this case, given that <code>p = 0.016</code>, is lower than all conventional level of significance and in particular our chosen alpha of <code>0.05</code>, then we have evidence to reject the null hypothesis that there is no correlation between gender and the frequency at which they think about sustainability. In other words, there is a correlation between gender and the frequency with which individuals contemplate sustainable activities.</p>
+</section>
+<section id="poisson-regression" class="level4">
+<h4 class="anchored" data-anchor-id="poisson-regression">Poisson regression</h4>
+<p>For a more thorough analysis, we could propose the hypothesis that gender is a causal factor in the variation observed in the count of energy-related sustainable actions performed. This differs from the Chi-squared test, which only implies a non-directional correlational tendency between the two variables. Given that the count of actions performed represents count data, a suitable approach would be to employ a Poisson regression, which falls under the category of generalized linear models. You can read more about it <a href="https://en.wikipedia.org/wiki/Poisson_regression">here</a>.</p>
+<p>To run a Poisson regression in R, go to:</p>
+<ul>
+<li><p>“Analyze&gt;Generalized Linear Models&gt;Generalized Linear Models…”</p></li>
+<li><p>Under the “Type of Model”, select “Poisson loglinear” under the “Counts”</p></li>
+<li><p>Click on “response” and drag the “energy_action_n” to “dependent variable” box</p></li>
+<li><p>Click on “Predictors” and drag the “gender” to “Factors” box (we treat gender as factors here because its in string. If you have your predictor(s) as numeric, you should drag it to “Covariates” box.</p></li>
+<li><p>Click on “Model” and drag the “gender” to “Model” box.</p></li>
+<li><p>Then you can leave others as is.</p>
+<p>Please note, this is a basic Poisson regression! You can play with “Build Term(s), Estimation and Statistics to include them as needed (especially when you have concern with overdispersion or interaction term(s).</p></li>
+<li><p>Click on OK.</p></li>
+</ul>
+<p>Now your model should be ready!</p>
+<p><strong>Interpreting the result of Poisson regression</strong></p>
+<p>The first table you’d see in the output should be the <strong>Model Information</strong> table. You can use this table to confirm that the dependent variable is the “energy_action_n”, “Poisson” is our probability distribution and we used the natural logarithm (i.e., “Log”) as the link function. Clearlly, if you are running a Poisson regression on your own data you’d have a different name for the dependent variable, but the probability distribution and link function should be the same!</p>
+<p>The second table, <strong>Case Processing Summary</strong> details how many cases were included and how many were excluded, as well as the percentage of both. You can think of the “Excluded” row as those with one or more missing values (indicating cases). As you can see in the table, there were 477 subjects in this analysis and 0 Excluded (i.e., we have no missing values).</p>
+<p>The <strong>Categorical Variable Information</strong> table shows the number and percentage of cases in each group of each independent categorical variable. In this example, we used just one categorical independent variable (also known as a “factor”), which was <strong>Gender</strong>. From this table, you can see we have unbalanced dataset (i.e., 381 vs 96). It’s important to ote that highly unbalanced group sizes can cause problems with model fit and it is worth noting when conducting your own analysis. For the purpose of this tutorial, we will proceed.</p>
+<p>The <strong>Continuous Variable Information</strong> table can provide a quick check for any potential problem, although not much can be gained here (when compared to other descriptive statistics table). However, the best information one can get here is to understand whether there might be overdispersion<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> in your analysis (i.e., one of <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html">assumptions</a> of Poisson regression). To confirm this, check the ratio of the variance (i.e.&nbsp;the square of the “Std. Deviation” column) to the mean (the “Mean” column) for the dependent variable. In this case, the mean = 5.03 and variance = 1.418^2 = 2.01 (which is a ration of 0.3996. i.e 2.01/5.03). Normally, in a Poisson distribution, for the the mean and variance to be equal, then the ratio should be 1. Clearly, from this ratio, we can deduce that even before we add in any predictor there is a small amount of underdispersion. However, we can check this assumption with our predictor (Goodness of Fit)!</p>
+<p><strong>Goodness of Fit</strong></p>
+<p>This table provides many results that can be used to assess our model fit. However, to interpret this table, we will focus on the value in the “Value/df” column for the “Pearson Chi-Square” row, which is 0.399 (like we calculated above).</p>
+<p>Normally, a value of 1 indicates equal dispersion (equidispersion), values &gt; 1 = overdispersion and values &lt;1 = underdispersion. The most common type of violation of this assumption is overdispersion and in our case we have underdispersion (clearly we have unbalanced data). Ideally, you should address this problem of <a href="https://journals.sagepub.com/doi/pdf/10.1177/1536867X1201200412">underdispersion</a> in your own analysis. There are several ways to achieve this, like using <strong>a beta-binomial model or a gamma-poisson model</strong>. This method introduces a parameter that controls the dispersion of your data.</p>
+<p>But for the sake of this tutorial, I will proceed with the model interpretation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Poisson_reg_1.PNG" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>The <strong>Omnibus Test</strong> table is a likelihood ratio test to show whether inclusion of all predictors improve the model over the intercept-only model (i.e., with no predictors added). From this result, we can see that having the predictor gives a <em>p</em>-value of .648. This indicate there’s no (statistically) significant overall model (look at the omnibus test).</p>
+<p>Interpreting the Model Effect and Significance of Predictor</p>
+<p>Looking at the “Sig” column of the <strong>Tests of Model Effects</strong> table shows the statistical significance of each of the predictors.</p>
+<p>From this result, we can see that the “gender” was not statistically significant (p = 0.645) in the sustainability activities and this table is perhaps the most useful for categorical predictors because it’s the only table showing the overal effect of a categorical variable. If you notice, I have not interpreted the “intercept” in the test of model effects. This is because, we usually do not base our interpretation on the “intercept” only mode. In fact, this represent the value of our response when all predictors are zero (or absent). So, if you have your predictor, then you interpret that relative to your response variable.</p>
+<p>Finally, the <strong><em>Parameter Estimates</em></strong> table shows both the coefficient estimates (“B” column) and the exponentiated values of the coefficients (the “Exp(B)” column) of the Poisson regression. Actually, Exp(B) is more informative and can be interpreted in several ways. For example, the exponentiated value of the gender=Female row is 0.977. This can be interpreted that the number of energy actions (i.e., the count of our dependent variable) will be 0.977 times greater for each extra female added. In other word, since Exp(B) coefficient is 0.977, it suggests that the expected count of the dependent variable (energy_action) increases by a factor of approximately 0.977 for a one-unit increase in the independent variable (female).</p>
+</section>
+<section id="summary" class="level4">
+<h4 class="anchored" data-anchor-id="summary">Summary</h4>
+<p>We can report this result properly. From the result, given that our P-value is non-significant (p= 0.645), we can conclude that there is no significant effect of gender on number of sustainable actions performed. Thus, we have evidence to accept our null hypothesis that gender has no effect on the number of sustainable energy actions performed.</p>
+<p>#END</p>
+<p>As this is the last tutorial, please feel free to reach out if there’s anyway we can collaborate! My email is- akandehammedadedamola@gmail.com.</p>
+<p>Best wishes.</p>
 
 
 </section>
 </section>
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Overdispersion- when the variation in your observation is higher than would be expected normally. https://biometry.github.io/APES//LectureNotes/2016-JAGS/Overdispersion/OverdispersionJAGS.html<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
