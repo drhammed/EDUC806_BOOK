@@ -1143,10 +1143,6 @@ If you look at this week's data [folder](https://drive.google.com/drive/folders/
 
 ### Data Formatting
 
-Getting qualitative data into a suitable format for analysis is a key pre-requisite for success - you\'re setting yourself up for the coding fun to follow! Most analytical tools are best suited to numerical datasets, so some coercion is needed to generate numerical values from our qualitative observations. When you are designing a survey, emember to consider how you will analyse the data, draw out how you imagine your graphs will look, etc., this will make it much easier later on.
-
-Some of the questions in this data set were designed on a five point scale, also known as a Likert scale. Each column in the dataframe contains responses to a single question. You can Look at the values contained in the column titled `sustainability_daily_think` entering this code:
-
 Preparing survey or other qualitative data for analysis is a crucial step for data analysis! Since most analytical tools are optimized for numerical datasets, a certain level of manipulation is necessary to transform survey responses into numerical values. When creating a survey, it's essential to think about the data analysis process. Consider how you intend to analyze the data and visualize the results, envisioning the structure of your graphs, and so on---this foresight significantly simplifies your subsequent analysis.
 
 In this dataset, some questions are structured on a Likert scale (five-point scale). Each column in the dataframe captures responses to a specific question. For example, you can check the values within the column labeled "sustainability_daily_think" to know how its structured.
