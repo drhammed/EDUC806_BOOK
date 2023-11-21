@@ -1326,7 +1326,7 @@ Now your model should be ready!
 
 **Interpreting the result of Poisson regression**
 
-The first table you'd see in the output should be the **Model Information** table. You can use this table to confirm that the dependent variable is the "energy_action_n", "Poisson" is our probability distribution and we used the natural logarithm (i.e., "Log") as the link function. Clearlly, if you are running a Poisson regression on your own data you'd have a different name for the dependent variable, but the probability distribution and link function should be the same!
+The first table you'd see in the output should be the **Model Information** table. You can use this table to confirm that the dependent variable is the "energy_action_n", "Poisson" is our probability distribution and we used the natural logarithm (i.e., "Log") as the link function. Clearly, if you are running a Poisson regression on your own data you'd have a different name for the dependent variable, but the probability distribution and link function should be the same!
 
 The second table, **Case Processing Summary** details how many cases were included and how many were excluded, as well as the percentage of both. You can think of the "Excluded" row as those with one or more missing values (indicating cases). As you can see in the table, there were 477 subjects in this analysis and 0 Excluded (i.e., we have no missing values).
 
