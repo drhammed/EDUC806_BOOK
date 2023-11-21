@@ -1298,7 +1298,7 @@ To do this in SPSS, go to:
 
 ![](images/Chi-square.PNG){fig-align="center"}
 
-The table above can be used to interpret the outcome of the chi-squared test, where a lower p-value suggests a higher probability of dependency between the two variables. In this case, given that `p = 0.016`, is lower than all conventional level of significance and in particular our chosen alpha of `0.05`, then we have evidence to reject the null hypothesis that there is no correlation between gender and the frequency at which they think about sustainability. In other words, there is a correlation between gender and the frequency with which individuals contemplate sustainable activities.
+The table above can be used to interpret the outcome of the chi-squared test, where a lower p-value suggests a higher probability of dependency between the two variables. In this case, given that `p = 0.016`, is lower than our chosen alpha of `0.05`, then we have evidence to reject the null hypothesis that there is no correlation between gender and the frequency at which they think about sustainability. In other words, there is a correlation between gender and the frequency with which individuals contemplate sustainable activities.
 
 #### Poisson regression
 
