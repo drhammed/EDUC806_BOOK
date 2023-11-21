@@ -1348,11 +1348,11 @@ But for the sake of this tutorial, I will proceed with the model interpretation.
 
 The **Omnibus Test** table is a likelihood ratio test to show whether inclusion of all predictors improve the model over the intercept-only model (i.e., with no predictors added). From this result, we can see that having the predictor gives a *p*-value of .648. This indicate there's no (statistically) significant overall model (look at the omnibus test).
 
-Interpreting the Model Effect and Significance of Predictor
+**Interpreting the Model Effect and Significance of Predictor**
 
 Looking at the "Sig" column of the **Tests of Model Effects** table shows the statistical significance of each of the predictors.
 
-From this result, we can see that the "gender" was not statistically significant (p = 0.645) in the sustainability activities and this table is perhaps the most useful for categorical predictors because it's the only table showing the overal effect of a categorical variable. If you notice, I have not interpreted the "intercept" in the test of model effects. This is because, we usually do not base our interpretation on the "intercept" only mode. In fact, this represent the value of our response when all predictors are zero (or absent). So, if you have your predictor, then you interpret that relative to your response variable.
+From this result, we can see that the "gender" was not statistically significant (p = 0.645) in the sustainability activities and this table is perhaps the most useful for categorical predictors because it's the only table showing the overal effect of a categorical variable. If you notice, I have not interpreted the "intercept" in the test of model effects. This is because, we usually do not base our interpretation on the "intercept" only model. In fact, this represent the value of our response when all predictors are zero (or absent). So, if you have your predictor, then you interpret that relative to your response variable.
 
 Finally, the ***Parameter Estimates*** table shows both the coefficient estimates ("B" column) and the exponentiated values of the coefficients (the "Exp(B)" column) of the Poisson regression. Actually, Exp(B) is more informative and can be interpreted in several ways. For example, the exponentiated value of the gender=Female row is 0.977. This can be interpreted that the number of energy actions (i.e., the count of our dependent variable) will be 0.977 times greater for each extra female added. In other word, since Exp(B) coefficient is 0.977, it suggests that the expected count of the dependent variable (energy_action) increases by a factor of approximately 0.977 for a one-unit increase in the independent variable (female).
 
